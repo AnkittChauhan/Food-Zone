@@ -1,9 +1,10 @@
 import React from 'react'
+import Home from '../Components/Home'
 
 const App = () => {
   return (
     <div>
-      <h1 className='text-8xl font-bold text-yellow-400'>PokeMon Go Testing</h1>
+     < Home/>
     </div>
   )
 }
