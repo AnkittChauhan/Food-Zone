@@ -3,8 +3,13 @@ import React from 'react'
 const Home = () => {
   return (
     <>
-        <div className='mt-20'>
-            <img src="\src\assets\NicePng_hamburguesa-png_1074346.png" alt="Main"/>
+        <div className='mt-24 display: flex'>
+          <img src="\src\assets\NicePng_hamburguesa-png_1074346.png" alt="Main"/>
+            <div className='flex-row-reverse pt-24'>
+                <h1 className='text-4xl font-sans ml-16'>Are You</h1>
+                <h1 className='text-8xl text-red-600 font-scratch -mt-5 -ml-6'>Hungry?</h1>
+                <button className='bg-green-400 text-xl tracking-widest w-48 h-9 mt-8 ml-7 shadow-2xl rounded-lg'>Order Now</button>
+            </div>
         </div>
         
     </>

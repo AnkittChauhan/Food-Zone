@@ -7,7 +7,13 @@ export default {
   ],
   important: '#root',
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        Signature: ["Zeyada", "cursive"],
+        scratch: [ "Protest Revolution", "sans-serif"],
+        Common: ['Protest Riot', "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }
