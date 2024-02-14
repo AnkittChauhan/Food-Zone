@@ -1,12 +1,15 @@
 import React from 'react'
 import Home from '../Components/Home'
 import LogInPage from '../Components/LogInPage'
+import PreLoginNavbar from '../Components/PreLoginNavbar'
 
 const App = () => {
   return (
     <div>
-     {/* < Home/> */}
-     < LogInPage/>
+       < PreLoginNavbar/>
+     < Home/>
+     {/* < LogInPage/> */}
+    
     </div>
   )
 }
