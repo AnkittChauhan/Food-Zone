@@ -1,5 +1,5 @@
 import React from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button , ButtonGroup} from "@nextui-org/react";
 
 export default function PreLoginNavbar() {
   return (
@@ -26,12 +26,14 @@ export default function PreLoginNavbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+        <Button className="bg-black text-white px-5 py-2 rounded-2xl shadow-2xl">
+          Login
+        </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
+        <Button className="bg-black text-white px-5 py-2 rounded-2xl shadow-2xl">
+          SignUp
+        </Button>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
