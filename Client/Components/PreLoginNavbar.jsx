@@ -12,7 +12,7 @@ export default function PreLoginNavbar() {
          </h1>
          <div className="space-x-2 py-2 px-2">
            <Button className="bg-black px-3 py-2 rounded-xl text-white">
-             Login
+             LogIn
            </Button>
            <Button className="bg-black px-3 py-2 rounded-xl text-white">
             SignUp
