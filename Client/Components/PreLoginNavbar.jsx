@@ -1,41 +1,23 @@
 import React from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button , ButtonGroup} from "@nextui-org/react";
+import { Button, Avatar } from "@nextui-org/react";
 
 export default function PreLoginNavbar() {
   return (
-    <Navbar className="bg-green-400">
-      <NavbarBrand>
-        <p className="font-bold text-inherit">ACME</p>
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-        <Button className="bg-black text-white px-5 py-2 rounded-2xl shadow-2xl">
-          Login
-        </Button>
-        </NavbarItem>
-        <NavbarItem>
-        <Button className="bg-black text-white px-5 py-2 rounded-2xl shadow-2xl">
-          SignUp
-        </Button>
-        </NavbarItem>
-      </NavbarContent>
-    </Navbar>
+    <div className="bg-green-400 h-16 flex">
+         <div>
+           <Avatar className="mx-4" src="./src/assets/Presentation1-removebg-preview (1).png" size="lg" />
+         </div>
+         <h1 className="mx-auto my-auto font-Common text-3xl text-white">
+            Food-Zone
+         </h1>
+         <div className="space-x-2 py-2 px-2">
+           <Button className="bg-black px-3 py-2 rounded-xl text-white">
+             Login
+           </Button>
+           <Button className="bg-black px-3 py-2 rounded-xl text-white">
+            SignUp
+           </Button>
+         </div>
+    </div>
   );
 }
