@@ -2,10 +2,10 @@ import React from 'react'
 
 const SignUp = () => {
   return (
-    <div className='grid grid-cols-2 max-h-screen'>
+    <div className='grid grid-cols-2'>
 
-        <div className='h-700px'>
-            <img src="./src/assets/SignIn.jpg"/>
+        <div>
+            <img className='h-screen w-full' src="./src/assets/SignIn.jpg"/>
         </div>
         <div>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -16,7 +16,7 @@ const SignUp = () => {
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
+            Create your Account
           </h2>
         </div>
 
@@ -66,15 +66,15 @@ const SignUp = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                Create Account
               </button>
             </div>
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{' '}
+            Already a member?{' '}
             <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Start a 14 day free trial
+              Login
             </a>
           </p>
         </div>
