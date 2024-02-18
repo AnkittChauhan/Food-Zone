@@ -12,7 +12,7 @@ const FoodCards = () => {
             <li>
               <div className='bg-gray-300 h-80 w-56 rounded-3xl shadow-xl'>
                 <div className='h-56'><img className='h-full w-full rounded-t-3xl object-fill' src={url} /></div>
-                <h1 className='text-2xl font-semibold tracking-wider text-center'>Name : {name}</h1>
+                <h1 className='text-2xl font-medium tracking-wider text-center'>Name : {name}</h1>
                 <h1 className='font-normal tracking-wider text-center'>Price :₹{price}</h1>
                 <button className='bg-green-500 text-white h-8 w-2/3 rounded-md font-medium tracking-wider hover:bg-green-700 focus:transition-colors duration-200 active:scale-95 mx-9'>
                   Add Item
