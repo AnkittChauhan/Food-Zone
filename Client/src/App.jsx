@@ -7,6 +7,7 @@ import SignUp from '../Components/SignUp'
 import FoodCards from '../Components/FoodCards'
 import ExampleItems from '../Components/ExampleItems'
 import Checkout from '../Components/Checkout'
+import FoodMenu from '../Components/FoodMenu'
 
 
 const App = () => {
@@ -20,7 +21,8 @@ const App = () => {
       {/* < FoodCards /> */}
       {/* < ExampleItems /> */}
       {/* < Example22 /> */}
-      < Checkout/>
+      {/* < Checkout/> */}
+      < FoodMenu/>
     </div>
   )
 }
