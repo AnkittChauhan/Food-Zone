@@ -1,7 +1,9 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
 import {Badge} from "@nextui-org/react";
+
 
 const navigation = [
   { name: 'Home', href: '#', current: true },
@@ -60,16 +62,18 @@ export default function Example() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                  <Badge content="0" className='bg-red-500 text-white' shape="circle" >
-                  <BellIcon className="h-4 w-6" aria-hidden="true" />
+              <div className="ml-4 flow-root lg:ml-6">
+                  <a href="#" className="group -m-2 flex items-center p-2">
+                  <Badge content="5" className='bg-red-500 text-white' shape="circle" >
+
+                    <ShoppingBagIcon
+                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
                   </Badge>
-                </button>
+                    <span className="sr-only">items in cart, view bag</span>
+                  </a>
+                </div>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">

@@ -6,9 +6,9 @@ import LoggedinNavbar from '../Components/LoggedinNavbar'
 import SignUp from '../Components/SignUp'
 import FoodCards from '../Components/FoodCards'
 import ExampleItems from '../Components/ExampleItems'
-import Checkout from '../Components/CartPage'
 import FoodMenu from '../Components/FoodMenu'
 import CartPage from '../Components/CartPage'
+import Checkout from '../Components/Checkout'
 
 
 const App = () => {
@@ -23,7 +23,8 @@ const App = () => {
       {/* < ExampleItems /> */}
       {/* < Example22 /> */}
       {/* < FoodMenu/> */}
-        < CartPage />
+        {/* < CartPage /> */}
+        {/* < Checkout /> */}
     </div>
   )
 }
