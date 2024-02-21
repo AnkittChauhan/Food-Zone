@@ -24,7 +24,7 @@ const App = () => {
       {/* < Example22 /> */}
       {/* < FoodMenu/> */}
         {/* < CartPage /> */}
-        {/* < Checkout /> */}
+        < Checkout />
     </div>
   )
 }
