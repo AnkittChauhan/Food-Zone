@@ -21,7 +21,6 @@ const App = () => {
      {/* < SignUp /> */}
       {/* < FoodCards /> */}
       {/* < ExampleItems /> */}
-      {/* < Example22 /> */}
       {/* < FoodMenu/> */}
         {/* < CartPage /> */}
         < Checkout />

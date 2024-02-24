@@ -65,7 +65,7 @@ const products = [
       id: 7,
       name: 'Machined Mechanical Pencil',
       href: '#',
-      price: '$35',
+      price: 'rs35',
       imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
       imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
     },

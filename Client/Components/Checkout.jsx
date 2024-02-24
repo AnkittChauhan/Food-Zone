@@ -4,7 +4,7 @@ const Checkout = () => {
   return (
     <>
        
-      <div className='bg-gray-200 max-w-max mx-auto my-14 rounded-lg'>
+      <div className='bg-gray-200 max-w-max mx-auto my-32 rounded-lg'>
          <u><h1 className='font-semibold text-2xl px-40 py-5'>Billing Details</h1></u>
          <div className='bg-slate-200 mx-4 my-2'>
            <div className='flex'>
