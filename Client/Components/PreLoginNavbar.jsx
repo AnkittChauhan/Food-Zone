@@ -1,7 +1,21 @@
 import React from "react";
 import { Button, Avatar } from "@nextui-org/react";
+import SignUp from "./SignUp";
+import { useNavigate } from "react-router-dom";
 
 export default function PreLoginNavbar() {
+
+   const navigate = useNavigate();
+
+  const handleSignIn = () => {
+      navigate('/SignIn')
+  }
+
+  const handleSignUp = () => {
+    navigate('/SignUp')
+}
+
+
   return (
     <div className="bg-green-400 h-16 flex">
          <div>
@@ -11,10 +25,10 @@ export default function PreLoginNavbar() {
             Food-Zone
          </h1>
          <div className="space-x-2 py-2 px-2">
-           <Button className="bg-black px-3 py-2 rounded-xl text-white">
+           <Button onClick={ handleSignIn } className="bg-black px-3 py-2 rounded-xl text-white">
              LogIn
            </Button>
-           <Button className="bg-black px-3 py-2 rounded-xl text-white">
+           <Button onClick={ handleSignUp }  className="bg-black px-3 py-2 rounded-xl text-white">
             SignUp
            </Button>
          </div>

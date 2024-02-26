@@ -1,6 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+
+  const navigate = useNavigate();
+
+  const handleSignIn = () => {
+      navigate('/SignIn')
+  }
+
   return (
     <div className='grid grid-cols-2'>
 
@@ -12,8 +20,7 @@ const SignUp = () => {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
+            src="https://png.pngtree.com/png-vector/20191003/ourmid/pngtree-user-login-or-authenticate-icon-on-gray-background-flat-icon-ve-png-image_1786166.jpg"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Create your Account
@@ -73,7 +80,7 @@ const SignUp = () => {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Already a member?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <a onClick={ handleSignIn } className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               Login
             </a>
           </p>
