@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Checkout = () => {
+const BilingPage = () => {
   return (
     <>
        
@@ -31,4 +31,4 @@ const Checkout = () => {
   )
 }
 
-export default Checkout
+export default BilingPage

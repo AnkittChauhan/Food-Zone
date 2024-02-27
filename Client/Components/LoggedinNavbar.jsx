@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
-import {Badge} from "@nextui-org/react";
+import {Badge, useNavbar} from "@nextui-org/react";
 
 
 const navigation = [
@@ -16,7 +16,18 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function LoggedinNavbar() {
+   
+ 
+
+   const handleCart = () => {
+   
+    const navigate = useNavbar
+
+    navigate('/ShoppingCart')
+      
+   }
+   
   return (
     <Disclosure as="nav" className="bg-green-400">
       {({ open }) => (
@@ -62,8 +73,8 @@ export default function Example() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+              <div  onClick={ handleCart } className="ml-4 flow-root lg:ml-6">
+                  <a className="group -m-2 flex items-center p-2">
                   <Badge content="5" className='bg-red-500 text-white' shape="circle" >
 
                     <ShoppingBagIcon
