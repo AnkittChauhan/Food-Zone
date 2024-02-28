@@ -1,33 +1,26 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Fragment } from 'react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Bars3Icon, BellIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useNavigate } from 'react-router-dom';
+import { Badge } from "@nextui-org/react";
 
-import {Badge, useNavbar} from "@nextui-org/react";
-
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
 
 const navigation = [
   { name: 'Home', href: '#', current: true },
-  { name: 'Items', href: '#', current: false },
-  { name: 'Wishlist', href: '#', current: false },
-  { name: 'About us', href: '#', current: false },
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+  { name: 'Products', href: '#', current: false },
+  { name: 'Contact', href: '#', current: false },
+];
 
 export default function LoggedinNavbar() {
-   
- 
+  const navigate = useNavigate();
 
-   const handleCart = () => {
-   
-    const navigate = useNavbar
+  const handleCart = () => {
+    navigate('/ShoppingCart');
+  };
 
-    navigate('/ShoppingCart')
-      
-   }
-   
   return (
     <Disclosure as="nav" className="bg-green-400">
       {({ open }) => (
@@ -35,7 +28,6 @@ export default function LoggedinNavbar() {
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
@@ -73,15 +65,14 @@ export default function LoggedinNavbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <div  onClick={ handleCart } className="ml-4 flow-root lg:ml-6">
+                <div onClick={handleCart} className="ml-4 flow-root lg:ml-6">
                   <a className="group -m-2 flex items-center p-2">
-                  <Badge content="5" className='bg-red-500 text-white' shape="circle" >
-
-                    <ShoppingBagIcon
-                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                  </Badge>
+                    <Badge content="5" className='bg-red-500 text-white' shape="circle">
+                      <ShoppingBagIcon
+                        className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                    </Badge>
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
                 </div>
@@ -167,5 +158,5 @@ export default function LoggedinNavbar() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
