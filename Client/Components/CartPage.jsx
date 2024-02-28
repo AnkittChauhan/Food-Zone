@@ -7,25 +7,13 @@ const CartPage = () => {
       id: 1,
       name: 'Product 1',
       price: 50.0,
-      quantity: 2,
+      quantity: 1,
     },
     {
       id: 2,
       name: 'Product 2',
       price: 90.0,
       quantity: 1,
-    },
-    {
-      id: 3,
-      name: 'Product 3',
-      price: 80.0,
-      quantity: 2,
-    },
-    {
-      id: 4,
-      name: 'Product 4',
-      price: 10.0,
-      quantity: 2,
     },
   ]);
 

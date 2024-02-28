@@ -8,6 +8,7 @@ import SignUp from '../Components/SignUp'
 import FoodMenu from '../Components/FoodMenu'
 import CartPage from '../Components/CartPage'
 import BilingPage from '../Components/BilingPage'
+import Profile from '../Components/Profile';
 
 
 const App = () => {
@@ -16,20 +17,17 @@ const App = () => {
   
   <BrowserRouter>
         < LoggedinNavbar />
-      <Routes>
+      {/* <Routes>
           <Route path="/" element={< Home />} />
           <Route path="/SignUp"  element={<SignUp />} />
           <Route path="/SignIn" element={< LogInPage />} />
           <Route path="/ShoppingCart" element={< CartPage />} />
           <Route path="/BilingPage" element={<BilingPage />} />
-          <Route path="/CartPage" element={<CartPage />} />
           <Route path="/Menu" element={< FoodMenu />} />
-      </Routes>
+      </Routes> */}
     </BrowserRouter>
 
-      {/* < CartPage /> */}
-  
-
+      < Profile />
   
   </>
   )
