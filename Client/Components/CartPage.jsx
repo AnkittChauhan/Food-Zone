@@ -1,7 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
+
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+      navigate("/BilingPage")    
+  }  
+
+
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
@@ -31,7 +40,6 @@ const CartPage = () => {
             {cartItems.map((item) => (
               <div key={item.id} className="flex items-center border-b py-4">
                 <div className="flex-shrink-0">
-                  {/* Increase the size of the image */}
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/800px-Eq_it-na_pizza-margherita_sep2005_sml.jpg"
                     alt="Product Image"
@@ -62,8 +70,12 @@ const CartPage = () => {
             <div className="mt-6">
               <p className="text-lg font-semibold">Total: ${getTotalPrice().toFixed(2)}</p>
               <button
+                
                 className="mt-4 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-                onClick={() => alert('Proceed to checkout')}
+                onClick={() => {
+                  alert('Proceed to checkout')
+                  handleCheckout()
+                }}
               >
                 Proceed to Checkout
               </button>
