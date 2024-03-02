@@ -1,3 +1,5 @@
+import {Image} from "@nextui-org/react";
+
 
 const products = [
     {
@@ -49,14 +51,16 @@ const products = [
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
               <div key={product.id} className="group relative">
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-64">
-                  <img
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
-                    className="h-full w-full object-fill object-center lg:h-full lg:w-full"
-                  />
+                <div >
+                  <Image
+                      className="rounded-3xl"
+                      isZoomed
+                      width={240}
+                      alt={product.imageAlt}
+                      src={product.imageSrc}
+                    />
                 </div>
-                <div className="mt-4 flex justify-between">
+                <div className="mt-4 flex justify-center space-x-2">
                   <div>
                     <h3 className="text-sm text-gray-700">
                       <a href={product.href}>
@@ -66,9 +70,9 @@ const products = [
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">{product.color}</p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">{product.price}</p>
+                  <p className="text-sm font-medium text-green-500">{product.price}</p>
                 </div>
-              <button className="bg-green-400 px-16 py-1 my-2 rounded-xl mx-10 hover:bg-green-300 active:bg-green-400 active:scale-x-110 scale-y-105 transition-all">Add Item</button>
+              <button className="bg-black text-white px-16 py-1 my-2 rounded-xl mx-10 hover:bg-gray-600 active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all">Add Item</button>
               </div>
             
             ))}
