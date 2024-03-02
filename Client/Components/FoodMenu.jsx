@@ -1,4 +1,5 @@
 import {Image} from "@nextui-org/react";
+import CartSound from "../src/assets/Add_to_cart_Effect.wav"
 
 
 const products = [
@@ -42,7 +43,14 @@ const products = [
       },
   ]
   
-  export default function Example22() {
+  export default function FoodMenu() {
+
+    const handleAddItem = () => {
+      
+      new Audio(CartSound).play();
+    }
+
+
     return (
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -72,7 +80,7 @@ const products = [
                   </div>
                   <p className="text-sm font-medium text-green-500">{product.price}</p>
                 </div>
-              <button className="bg-black text-white px-16 py-1 my-2 rounded-xl mx-10 hover:bg-gray-600 active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all">Add Item</button>
+              <button onClick={ handleAddItem } className="bg-black text-white px-16 py-1 my-2 rounded-xl mx-10 hover:bg-gray-600 active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all">Add Item</button>
               </div>
             
             ))}
