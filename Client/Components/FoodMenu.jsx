@@ -1,5 +1,6 @@
 import {Image} from "@nextui-org/react";
 import CartSound from "../src/assets/Add_to_cart_Effect.wav"
+import NewSlide from "../src/assets/NewSlide.mp3"
 
 
 const products = [
@@ -50,6 +51,9 @@ const products = [
       new Audio(CartSound).play();
     }
 
+    const handleHoverSound = () => {
+      new Audio(NewSlide).play();
+    }
 
     return (
       <div className="bg-white">
@@ -66,6 +70,7 @@ const products = [
                       width={240}
                       alt={product.imageAlt}
                       src={product.imageSrc}
+                      onMouseEnter={ handleHoverSound }
                     />
                 </div>
                 <div className="mt-4 flex justify-center space-x-2">

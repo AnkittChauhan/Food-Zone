@@ -23,6 +23,7 @@ const BilingPage = () => {
          <input type="text" placeholder='Full address' className=' rounded-md bg-slate-100 py-1 px-4 w-11/12 mx-4' />
          <button className='bg-green-400 text-center my-4 ml-60 text-white px-4 py-1 rounded-lg hover:bg-green-500 active:bg-green-400 active:scale-x-110 scale-y-105 transition-all'>Order</button>
 
+          
 
           
        </div>

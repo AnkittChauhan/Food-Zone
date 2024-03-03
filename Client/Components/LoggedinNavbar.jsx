@@ -1,7 +1,6 @@
-import { Fragment } from 'react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Disclosure, Menu } from '@headlessui/react';
+import { Bars3Icon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useNavigate } from 'react-router-dom';
 import { Badge } from "@nextui-org/react";
 
 function classNames(...classes) {
@@ -80,7 +79,7 @@ export default function LoggedinNavbar() {
                 </div>
 
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
+                <Menu as="div" className="relative ml-3 transition-all">
                   <div>
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
@@ -93,7 +92,7 @@ export default function LoggedinNavbar() {
                     </Menu.Button>
                   </div>
                  
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-all">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -107,7 +106,7 @@ export default function LoggedinNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Settings
@@ -117,8 +116,8 @@ export default function LoggedinNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                           
+                            className={classNames(active ? 'bg-red-500 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Log out
                           </a>
