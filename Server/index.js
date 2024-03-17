@@ -6,6 +6,8 @@ const ItemModel = require('./models/Items')
 
 const app = express()
 const PORT = 8080;
+const jwt = require('jsonwebtoken');
+const SecretKey = "dSw4lGmRRM7azWzL"; 
 
 
 app.get('/home' , ( req , res ) => {
@@ -37,11 +39,12 @@ mongoose.connect("mongodb://localhost:27017")
 
 
 
-    app.post("/createUser", async (req, res) => {
+    app.post('/createUser', async (req, res) => {
         try {
             const Customer = req.body;
             const newCustomer = new CustomerModel(Customer);
             await newCustomer.save();
+            console.log(newCustomer);
 
             const token = jwt.sign({ id: req.body.email }, SecretKey );
             res.json({ token });
