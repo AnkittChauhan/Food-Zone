@@ -16,7 +16,7 @@ const App = () => {
   <>
   
   <BrowserRouter>
-      < PreLoginNavbar />
+        < LoggedinNavbar /> 
       <Routes>
           <Route path="/" element={< Home />} />
           <Route path="/SignUp"  element={<SignUp />} />
