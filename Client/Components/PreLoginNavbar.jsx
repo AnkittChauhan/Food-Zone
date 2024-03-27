@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Avatar } from "@nextui-org/react";
-import SignUp from "./SignUp";
 import { useNavigate } from "react-router-dom";
 
 export default function PreLoginNavbar() {
