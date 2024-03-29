@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
         <div className='mt-24 display: flex'>
-          <img src="./src/assets/NicePng_hamburguesa-png_1074346.png"/>
+          <img src="\src\assets\NicePng_hamburguesa-png_1074346.png"/>
             <div className='flex-row-reverse pt-24'>
                 <h1 className='text-4xl font-sans ml-16'>Are You</h1>
                 <h1 className='text-8xl text-red-600 font-scratch -mt-5 -ml-6'>Hungry?</h1>
