@@ -65,7 +65,7 @@ export default function LoggedinNavbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div onClick={handleCart} className="ml-4 flow-root lg:ml-6">
                   <a className="group -m-2 flex items-center p-2">
-                    <Badge content="5" className='bg-red-500 text-white' shape="circle">
+                    <Badge content="2" className='bg-red-500 text-white' shape="circle">
                       <ShoppingBagIcon
                         className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"
