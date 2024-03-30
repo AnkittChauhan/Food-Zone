@@ -46,7 +46,7 @@ export default function LoggedinNavbar() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="h-10 w-auto"
-                    src="./src/assets/Presentation1-removebg-preview (1).png"
+                    src="./dist/assets/Presentation1-removebg-preview (1).png"
                     alt="Your Company"
                   />
                 </div>
