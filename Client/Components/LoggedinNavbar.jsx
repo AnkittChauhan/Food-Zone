@@ -2,6 +2,7 @@ import { Disclosure, Menu } from '@headlessui/react';
 import { Bars3Icon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from "@nextui-org/react";
+import BrandLogo from "../public/assets/BrandLogo.png"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -46,7 +47,7 @@ export default function LoggedinNavbar() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="h-10 w-auto"
-                    src="./src/assets/Presentation1-removebg-preview (1).png"
+                    src={BrandLogo}
                     alt="Your Company"
                   />
                 </div>

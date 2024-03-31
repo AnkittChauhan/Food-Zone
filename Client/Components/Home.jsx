@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import MenuLogo from '../public/assets/HomeLogo.png'
 
 const Home = () => {
 
@@ -14,7 +15,7 @@ const Home = () => {
   return (
     <>
         <div className='mt-24 display: flex'>
-          <img src="https://drive.google.com/file/d/1lCFmjtlZxP5z40soycdHS4MJOor0NnuT/view?usp=sharing"/>
+          <img src={MenuLogo}/>
             <div className='flex-row-reverse pt-24'>
                 <h1 className='text-4xl font-sans ml-16'>Are You</h1>
                 <h1 className='text-8xl text-red-600 font-scratch -mt-5 -ml-6'>Hungry?</h1>
