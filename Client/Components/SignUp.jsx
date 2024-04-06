@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios, { Axios } from 'axios';
+import SignUpImg from '../public/assets/SignIn.jpg'
 
 
 const SignUp = () => {
@@ -9,6 +10,7 @@ const SignUp = () => {
 
   const handleSignIn = () => {
       navigate('/SignIn')
+      console.log("Idhar Takk");
   }
 
   const [ email , useEmail ] = useState('');
@@ -20,19 +22,31 @@ const SignUp = () => {
   }
 
 
+  const handleCreateAccount = () => {
+    console.log("idhar tak 2");
+  }
+
   // const handleCreateAccount = () => {
-  //   axios.post('/createUser' , user)
-  // }
-   function handleCreateAccount() {
-    console.log(user)
-   }
+  //   if (email == "" && password == "") {
+
+  //     return alert("Enter the values first")
+
+  //   } else {
+  //     axios.post("mongodb://localhost:27017/createUser", {
+  //       email ,
+  //       password
+  //     })
+  //     console.log(user);
+  //   }
+
+  // };
 
 
   return (
     <div className='grid grid-cols-2'>
 
         <div>
-            <img className='h-screen w-full' src="./src/assets/SignIn.jpg"/>
+            <img className='h-screen w-full' src={SignUpImg}/>
         </div>
         <div>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -90,9 +104,7 @@ const SignUp = () => {
             </div>
 
             <div>
-              <button
-                type="submit"
-                onClick={ handleCreateAccount() }
+              <button onClick={handleCreateAccount}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Create Account

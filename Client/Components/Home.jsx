@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import MenuLogo from '../public/assets/HomeLogo.png'
+import MenuLogo from '../src/assets/HomeLogo.png'
 
 const Home = () => {
 

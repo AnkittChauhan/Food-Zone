@@ -55,7 +55,7 @@ mongoose.connect("mongodb://localhost:27017")
     });
     
 
-    app.get("/getCustomer", async (req, res) => {
+    app.get("/getUser", async (req, res) => {
         try {
             const results = await CustomerModel.find();
             res.json(results);
