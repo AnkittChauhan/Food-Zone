@@ -1,6 +1,6 @@
 import {Image} from "@nextui-org/react";
-import CartSound from "../public/assets/Add_to_cart_Effect.wav"
-import NewSlide from "../public/assets/NewSlide.mp3"
+import CartSound from "../src/assets/Add_to_cart_Effect.wav"
+import NewSlide from "../src/assets/NewSlide.mp3"
 
 
 const products = [

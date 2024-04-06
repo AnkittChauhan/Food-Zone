@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios, { Axios } from 'axios';
-import SignUpImg from '../public/assets/SignIn.jpg'
+import SignUpImg from '../src/assets/SignIn.jpg'
 
 
 const SignUp = () => {
