@@ -19,7 +19,7 @@ const App = () => {
   <BrowserRouter>
         < PreLoginNavbar />    
       <Routes>
-          <Route path="/" element={< Test />} />
+          <Route path="/" element={< Home />} />
           <Route path="/SignUp"  element={<SignUp />} />
           <Route path="/SignIn" element={< LogInPage />} />
           <Route path="/ShoppingCart" element={< CartPage />} />
