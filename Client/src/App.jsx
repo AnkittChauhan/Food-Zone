@@ -9,6 +9,7 @@ import FoodMenu from '../Components/FoodMenu'
 import CartPage from '../Components/CartPage'
 import BilingPage from '../Components/BilingPage'
 import Profile from '../Components/Profile';
+import Test from '../Components/Test';
 
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
   <BrowserRouter>
         < PreLoginNavbar />    
       <Routes>
-          <Route path="/" element={< Home />} />
+          <Route path="/" element={< Test />} />
           <Route path="/SignUp"  element={<SignUp />} />
           <Route path="/SignIn" element={< LogInPage />} />
           <Route path="/ShoppingCart" element={< CartPage />} />
