@@ -24,6 +24,13 @@ export default function LoggedinNavbar() {
   navigate('/Menu')
  }
 
+  const handleLogout = () => {
+
+    localStorage.removeItem("Token")
+    window.location.reload(); 
+
+  }
+
 
 
   return (
@@ -114,7 +121,7 @@ export default function LoggedinNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                           
+                            onClick={ handleLogout }
                             className={classNames(active ? 'bg-red-500 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Log out
