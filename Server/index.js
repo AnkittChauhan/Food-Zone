@@ -64,22 +64,24 @@ mongoose.connect("mongodb://localhost:27017")
     // });
 
 
-    app.post( '/Login' , ( req , res ) => {
+    app.post( '/Login' ,async( req , res ) => {
         
         
         try {
 
-            const email = req.body.email;
-                console.log(email);
+            const {email , password } = req.body;
             if(!email){
                 return res.json("Provide a User first");
          }
          else {
-                const user = { email : email }
-                console.log("1");
-                const Token = jwt.sign(user, process.env.SecretKey)
-                res.json({ message:"Login Successful" , Token })
-                console.log("2");
+                const isUser = await CustomerModel.findOne({email , password}) 
+                if(!isUser){
+                  res.status(401).json({message:"User Not Found"})
+                } 
+                else{
+                    const Token = jwt.sign(email, process.env.SecretKey)
+                    res.json({ message:"Login Successful" , Token })
+                }
          }   
  
         } catch (error) {
@@ -89,6 +91,32 @@ mongoose.connect("mongodb://localhost:27017")
 
         
     })
+
+    app.post( '/CreateUser' ,async( req , res ) => {
+
+        const user = req.body;
+        const email = req.body.email;
+        const isUser = await CustomerModel.findOne(user);
+
+        if(isUser){
+            res.json({message: "User Already exist , Can't be Created"});
+        } else{
+                try {
+                    
+                    const newUser = new CustomerModel(user);
+                    await newUser.save();
+                    const token = jwt.sign( email , process.env.SecretKey );
+                    console.log(token);
+                    res.json({message:"User Created Successfully"},"Token" , token)
+
+
+                } catch (error) {
+                    res.status(404).json(error)
+                }
+        }
+
+    })
+
 
 
 

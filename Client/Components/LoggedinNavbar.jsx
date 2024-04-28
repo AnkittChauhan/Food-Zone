@@ -122,7 +122,7 @@ export default function LoggedinNavbar() {
                         {({ active }) => (
                           <a
                             onClick={ handleLogout }
-                            className={classNames(active ? 'bg-red-500 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(active ? 'bg-red-400 rounded-md' : '', 'block px-4 py-2 text-sm text-gray-800')}
                           >
                             Log out
                           </a>

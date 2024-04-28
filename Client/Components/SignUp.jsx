@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import SignUpImg from '../src/assets/SignIn.jpg'
 
 
@@ -10,36 +10,43 @@ const SignUp = () => {
 
   const handleSignIn = () => {
       navigate('/SignIn')
-      console.log("Idhar Takk");
   }
 
   const [ email , useEmail ] = useState('');
   const [ password , usePassword ] = useState('');
 
-  const user = {
-    email ,
-    password
-  }
+  const handleCreateAccount = async (e) => {
+    e.preventDefault()
+    console.log(email,password);
 
-
-  const handleCreateAccount = () => {
-    console.log("idhar tak 2");
-  }
-
-  // const handleCreateAccount = () => {
-  //   if (email == "" && password == "") {
-
-  //     return alert("Enter the values first")
-
-  //   } else {
-  //     axios.post("mongodb://localhost:27017/createUser", {
-  //       email ,
-  //       password
+  //  await axios.post('http://localhost:8080/CreateUser' , {email, password}).then(
+  //     (res) => {
+  //       console.log(res);
+  //     }).catch((err) => {
+  //       console.log(err);
   //     })
-  //     console.log(user);
-  //   }
 
-  // };
+      await axios.post('http://localhost:8080/CreateUser', { email, password })
+      .then(response => {
+        const token = response.data.token;
+        if(!token){
+          return console.log("Token not Found");
+        }else{
+          console.log("User Created Successfully:", token);
+          localStorage.setItem("Token",token)
+          navigate('/')
+          window.location.reload();
+        }
+      })
+      .catch(error => {
+    if (error.response && error.response.data) {
+      console.error("Login failed:", error.response.data.message || error.message);
+    } else {
+      console.error("Login failed:", error.message);
+    }
+  });
+
+  }   
 
 
   return (
@@ -72,8 +79,9 @@ const SignUp = () => {
                     useEmail(e.target.value)
                   }}
                   id='Email'    
+                  name="email"
                   autoComplete="email"
-                
+                  required
                   className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -96,15 +104,17 @@ const SignUp = () => {
                     usePassword(e.target.value)
                   }}
                   id='Pass'
+                  name="password"
+                  type="password"
                   autoComplete="current-password"
-                
+                  required
                   className="block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
             <div>
-              <button onClick={handleCreateAccount}
+              <button onClick={ handleCreateAccount }
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Create Account
