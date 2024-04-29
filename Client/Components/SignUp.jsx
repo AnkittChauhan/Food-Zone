@@ -29,6 +29,7 @@ const SignUp = () => {
       await axios.post('http://localhost:8080/CreateUser', { email, password })
       .then(response => {
         const token = response.data.token;
+        console.log(response.data);
         if(!token){
           return console.log("Token not Found");
         }else{

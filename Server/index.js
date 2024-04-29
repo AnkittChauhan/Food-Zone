@@ -80,7 +80,7 @@ mongoose.connect("mongodb://localhost:27017")
                 } 
                 else{
                     const Token = jwt.sign(email, process.env.SecretKey)
-                    res.json({ message:"Login Successful" , Token })
+                    res.json({ message:"Login Successful" ,Token })
                 }
          }   
  
@@ -107,7 +107,7 @@ mongoose.connect("mongodb://localhost:27017")
                     await newUser.save();
                     const token = jwt.sign( email , process.env.SecretKey );
                     console.log(token);
-                    res.json({message:"User Created Successfully"},"Token" , token)
+                    res.json({message:"User Created Successfully" , token})
 
 
                 } catch (error) {
