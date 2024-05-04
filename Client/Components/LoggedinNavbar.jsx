@@ -27,7 +27,9 @@ export default function LoggedinNavbar() {
   const handleLogout = () => {
 
     localStorage.removeItem("Token")
+    navigate('/')
     window.location.reload(); 
+
 
   }
 

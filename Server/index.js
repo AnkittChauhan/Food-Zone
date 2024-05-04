@@ -106,7 +106,6 @@ mongoose.connect("mongodb://localhost:27017")
                     const newUser = new CustomerModel(user);
                     await newUser.save();
                     const token = jwt.sign( email , process.env.SecretKey );
-                    console.log(token);
                     res.json({message:"User Created Successfully" , token})
 
 

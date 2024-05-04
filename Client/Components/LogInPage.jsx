@@ -1,6 +1,7 @@
 import axios, { Axios } from 'axios';
 import { useNavigate } from "react-router-dom"
 import { useState } from 'react';
+import { Toaster, toast } from 'sonner';
 
 export default function LogInPage() {
 
@@ -19,7 +20,7 @@ export default function LogInPage() {
     if(!email || !password ) return console.log("Email/Pass is Invalid");
 
    await axios.post('http://localhost:8080/Login', { email, password })
-    .then(response => {
+    .then( response => {
       const token = response.data.Token;
       console.log("Login successful:", token);
       localStorage.setItem("Token",token)
@@ -28,12 +29,15 @@ export default function LogInPage() {
     })
     .catch(error => {
   if (error.response && error.response.data) {
-    console.error("Login failed:", error.response.data.message || error.message);
+    toast.error("Login failed: "+error.response.data.message )
   } else {
-    console.error("Login failed:", error.message);
+    toast.error("Login failed: "+error.message )
   }
 });
   }
+ 
+
+
 
    
 
@@ -99,6 +103,7 @@ export default function LogInPage() {
               >
                 Sign in
               </button>
+              <Toaster position="top-center" expand={false} richColors />
             </div>
           </form>
 
@@ -107,7 +112,7 @@ export default function LogInPage() {
             <a onClick={ handleSignUp } className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
              Create an Account
             </a>
-          </p>
+          </p>          
         </div>
       </div>
     </>

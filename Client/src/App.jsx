@@ -8,8 +8,6 @@ import SignUp from '../Components/SignUp'
 import FoodMenu from '../Components/FoodMenu'
 import CartPage from '../Components/CartPage'
 import BilingPage from '../Components/BilingPage'
-import Profile from '../Components/Profile';
-import Test from '../Components/Test';
 
 
 const App = () => {
