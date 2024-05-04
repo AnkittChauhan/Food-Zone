@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import SignUpImg from '../src/assets/SignIn.jpg'
+import { Toaster, toast } from 'sonner';
 
 
 const SignUp = () => {
@@ -17,19 +18,11 @@ const SignUp = () => {
 
   const handleCreateAccount = async (e) => {
     e.preventDefault()
-    console.log(email,password);
-
-  //  await axios.post('http://localhost:8080/CreateUser' , {email, password}).then(
-  //     (res) => {
-  //       console.log(res);
-  //     }).catch((err) => {
-  //       console.log(err);
-  //     })
 
       await axios.post('http://localhost:8080/CreateUser', { email, password })
       .then(response => {
         const token = response.data.token;
-        console.log(response.data);
+        toast.error(response.data.message )
         if(!token){
           return console.log("Token not Found");
         }else{
@@ -41,9 +34,9 @@ const SignUp = () => {
       })
       .catch(error => {
     if (error.response && error.response.data) {
-      console.error("Login failed:", error.response.data.message || error.message);
+      toast.error("Login failed: "+error.response.data.message )
     } else {
-      console.error("Login failed:", error.message);
+    toast.error("Login failed: "+error.message )
     }
   });
 
@@ -120,6 +113,7 @@ const SignUp = () => {
               >
                 Create Account
               </button>
+              <Toaster position="top-center" expand={false} richColors />
             </div>
           </form>
 
