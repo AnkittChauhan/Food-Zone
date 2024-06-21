@@ -6,41 +6,40 @@ import NewSlide from "../src/assets/NewSlide.mp3"
 const products = [
     {
         id: 1,
-        name: 'Earthen Bottle',
+        name: 'Pizza',
         href: '#',
-        price: '$48',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        price: '₹99',
+        imageSrc: 'https://kauveryhospital.com/blog/wp-content/uploads/2021/04/pizza-5179939_960_720.jpg',
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
       },
       {
         id: 2,
-        name: 'Nomad Tumbler',
-        href: '#',
-        price: '$35',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+        name: 'MOMO',
+        price: '₹60',
+        imageSrc: 'https://media-cdn.tripadvisor.com/media/photo-s/13/22/e2/6c/prem-chinese-fast-food.jpg',
         imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
       },
       {
         id: 3,
-        name: 'Focus Paper Refill',
+        name: 'Pizza Burgir',
         href: '#',
-        price: '$89',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+        price: '₹130',
+        imageSrc: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/cf/b5/4e/extra-cheese.jpg?w=600&h=400&s=1',
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
       },
       {
         id: 4,
-        name: 'Machined Mechanical Pencil',
+        name: 'long men',
         href: '#',
-        price: '$35',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+        price: '₹10',
+        imageSrc: 'https://static.toiimg.com/photo/100230666.cms',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
       },
       {
         id: 5,
         name: 'Machined Mechanical Pencil',
         price: '$34',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+        imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS70F0KLeHiqCKt773amTeRoNqnC_WfAjM73Q&s',
       },
   ]
   
@@ -60,15 +59,13 @@ const products = [
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
   
-          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          <div className="mt-6 grid max-h-14 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
-              <div key={product.id} className="group relative">
-                <div >
+              <div key={product.id} className="relative">
+                <div className="h-64 w-64 rounded-3xl bg-gray-500 overflow-hidden">
                   <Image
-                      className="rounded-3xl"
+                      className="h-64 w-64"
                       isZoomed
-                      width={240}
-                      alt={product.imageAlt}
                       src={product.imageSrc}
                       onMouseEnter={ handleHoverSound }
                     />

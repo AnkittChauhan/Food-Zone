@@ -64,7 +64,7 @@ mongoose.connect("mongodb://localhost:27017")
     // });
 
 
-    app.post( '/Login' ,async( req , res ) => {
+    app.post( '/Login',async( req , res ) => {
         
         
         try {
@@ -91,6 +91,28 @@ mongoose.connect("mongodb://localhost:27017")
 
         
     })
+
+
+
+    async function verifyJWT( req , res , next ){
+
+        const token = localStorage.getItem("Token");
+        if(!token){
+            res.json({message:"User not Authorized"})
+        } else{
+            const Username = jwt.verify( token , SecretKey );
+            const isUser = await CustomerModel.findOne(Username);
+            
+            if(!isUser){
+                res.json("User not Authorized")
+            }else{
+                next()
+            }
+
+        }        
+    }
+
+
 
     app.post( '/CreateUser' ,async( req , res ) => {
 
