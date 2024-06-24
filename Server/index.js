@@ -138,6 +138,45 @@ mongoose.connect("mongodb://localhost:27017")
 
     })
 
+//--------------------------------| For Food Menu |------------------------------------------------//
+
+
+        app.post("/createItem", async (req, res) => {
+            try {
+                const items = req.body;
+                const newItems = new ItemModel(items);
+                await newItems.save();
+                res.json(items);
+            } catch (err) {
+                res.json(err);
+            }
+        });
+
+        app.delete("/deleteItems/:id", async (req, res) => {
+            const id = req.params.id;
+            try {
+                await ItemModel.findByIdAndDelete(id).exec();
+                res.json({ message: "ItemRemoved" });
+            } catch (err) {
+                res.json(err);
+            }
+        });
+
+        app.get("/getItems", async (req, res) => {
+            try {
+                const results = await ItemModel.find();
+                res.json(results);
+            } catch (err) {
+                res.json(err);
+            }
+        });
+
+
+
+
+
+
+
 
 
 

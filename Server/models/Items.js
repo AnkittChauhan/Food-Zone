@@ -7,7 +7,7 @@ const ItemSchema = new mogoose.Schema({
         type: String,
         requied: true
    },
-   imgUrl:{
+   url:{
         type: String,
         requied: true
    },

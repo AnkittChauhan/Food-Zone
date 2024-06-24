@@ -8,6 +8,7 @@ import SignUp from '../Components/SignUp'
 import FoodMenu from '../Components/FoodMenu'
 import CartPage from '../Components/CartPage'
 import BilingPage from '../Components/BilingPage'
+import AdminPage from '../Components/AdminPage';
 
 
 const App = () => {
@@ -23,7 +24,7 @@ const App = () => {
   return (
   <>
   
-  <BrowserRouter>
+  {/* <BrowserRouter>
     {conditionalNavbar}
       <Routes>
           <Route path="/" element={< Home />} />
@@ -33,10 +34,10 @@ const App = () => {
           <Route path="/BilingPage" element={<BilingPage />} />
           <Route path="/Menu" element={< FoodMenu />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> */}
 
+    < AdminPage />
 
-  
   </>
   )
 }
