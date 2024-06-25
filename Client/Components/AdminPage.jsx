@@ -15,7 +15,7 @@ const AdminPage = () => {
     const addDish = () => {
       if (name == "" && price == "" && url == "") {
   
-        return alert("Enter the values first")
+        return toast.warning("Input can't be blank")
   
       } else {
         axios.post("http://localhost:8080/createItem", {
@@ -66,7 +66,7 @@ const AdminPage = () => {
           <input className='inputItem bg-gray-200 w-80 h-10 pl-4 mt-4 lg:mt-0' type="text" onChange={(e) => {
             setName(e.target.value)
             if (name.length >= 8) {
-              alert("Letter must be less then 8")
+              toast.warning('Letter must be less then 8')
             }
           }} placeholder='Dish' />
           <input className='inputItem bg-gray-200 w-80 h-10 pl-4 mt-4 lg:mt-0' type="text" onChange={(e) => {

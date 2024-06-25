@@ -3,6 +3,8 @@ import { Bars3Icon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outlin
 import { useNavigate } from 'react-router-dom';
 import { Badge } from "@nextui-org/react";
 import BrandLogo from "../src/assets/BrandLogo.png"
+import ModelForm from './miniComponents/ModelForm';
+import AdminPage from './AdminPage'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -22,6 +24,10 @@ export default function LoggedinNavbar() {
  
  const handleItems = () => {
   navigate('/Menu')
+ }
+
+ const handleAdmin = () => {
+   navigate('/AdminPage')
  }
 
   const handleLogout = () => {
@@ -85,7 +91,7 @@ export default function LoggedinNavbar() {
                   </a>
                 </div>
 
-                {/* Profile dropdown */}
+                
                 <Menu as="div" className="relative ml-3 transition-all">
                   <div>
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -113,10 +119,10 @@ export default function LoggedinNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            
+                            onClick={ handleAdmin }
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Settings
+                            Admin Page
                           </a>
                         )}
                       </Menu.Item>

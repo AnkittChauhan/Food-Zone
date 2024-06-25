@@ -9,6 +9,7 @@ import FoodMenu from '../Components/FoodMenu'
 import CartPage from '../Components/CartPage'
 import BilingPage from '../Components/BilingPage'
 import AdminPage from '../Components/AdminPage';
+import ModelForm from '../Components/miniComponents/ModelForm';
 
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
   return (
   <>
   
-  {/* <BrowserRouter>
+  <BrowserRouter>
     {conditionalNavbar}
       <Routes>
           <Route path="/" element={< Home />} />
@@ -33,10 +34,11 @@ const App = () => {
           <Route path="/ShoppingCart" element={< CartPage />} />
           <Route path="/BilingPage" element={<BilingPage />} />
           <Route path="/Menu" element={< FoodMenu />} />
+          <Route path="/AdminPage" element={< AdminPage />} />
       </Routes>
-    </BrowserRouter> */}
+    </BrowserRouter>
 
-    < AdminPage />
+    
 
   </>
   )
