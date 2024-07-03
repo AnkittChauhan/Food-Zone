@@ -18,13 +18,13 @@ const AdminPage = () => {
         return toast.warning("Input can't be blank")
   
       } else {
-        axios.post("http://localhost:8080/createItem", {
+        axios.post("https://food-zone-nco8.onrender.com/createItem", {
           name,
           price,
           url,
         }).catch((error) => { throw error }).then(() => {
           toast.success('Item Added Successfully')
-          axios.get("http://localhost:8080/getItems").then((response) => {
+          axios.get("https://food-zone-nco8.onrender.com/getItems").then((response) => {
             setlistOfItems(response.data);
           });
         });
@@ -35,7 +35,7 @@ const AdminPage = () => {
   
     useEffect(() => {
   
-      axios.get("http://localhost:8080/getItems").then((response) => {
+      axios.get("https://food-zone-nco8.onrender.com/getItems").then((response) => {
   
   
         setlistOfItems(response.data)
@@ -45,8 +45,8 @@ const AdminPage = () => {
   
     const deleteItem = (id) => {
   
-      axios.delete(`http://localhost:8080/deleteItems/${id}`).then(() => {
-        return axios.get("http://localhost:8080/getItems")
+      axios.delete(`https://food-zone-nco8.onrender.com/deleteItems/${id}`).then(() => {
+        return axios.get("https://food-zone-nco8.onrender.com/getItems")
       }).then((response) => {
   
   

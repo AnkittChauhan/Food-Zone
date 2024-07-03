@@ -19,7 +19,7 @@ export default function LogInPage() {
     e.preventDefault()
     if(!email || !password ) return console.log("Email/Pass is Invalid");
 
-   await axios.post('http://localhost:8080/Login', { email, password })
+   await axios.post('https://food-zone-nco8.onrender.com/Login', { email, password })
     .then( response => {
       const token = response.data.Token;
       console.log("Login successful:", token);

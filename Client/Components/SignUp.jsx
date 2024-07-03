@@ -19,7 +19,7 @@ const SignUp = () => {
   const handleCreateAccount = async (e) => {
     e.preventDefault()
 
-      await axios.post('http://localhost:8080/CreateUser', { email, password })
+      await axios.post('https://food-zone-nco8.onrender.com/CreateUser', { email, password })
       .then(response => {
         const token = response.data.token;
         toast.error(response.data.message )

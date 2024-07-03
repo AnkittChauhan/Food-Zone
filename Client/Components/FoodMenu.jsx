@@ -20,7 +20,7 @@ import axios from 'axios';
 
     useEffect(() => {
   
-      axios.get("http://localhost:8080/getItems").then((response) => {
+      axios.get("https://food-zone-nco8.onrender.com/getItems").then((response) => {
   
   
         setlistOfItems(response.data)
