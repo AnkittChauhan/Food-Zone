@@ -12,10 +12,11 @@ const PORT = 8080;
 const jwt = require('jsonwebtoken');
 app.use(express.json())
 const SecretKey = process.env.SecretKey;
+const database = process.env.Database;
 
 
 
-mongoose.connect("mongodb://localhost:27017")
+mongoose.connect(database)
     .then(() => {
         console.log("Connected to the database");
     })
