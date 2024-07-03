@@ -65,8 +65,8 @@ const AdminPage = () => {
         <div className='grid sm:grid-rows-3 lg:grid-rows-none space-y-4 justify-items-center -ml-2 mt-2'>
           <input className='inputItem bg-gray-200 w-80 h-10 pl-4 mt-4 lg:mt-0' type="text" onChange={(e) => {
             setName(e.target.value)
-            if (name.length >= 8) {
-              toast.warning('Letter must be less then 8')
+            if (name.length >= 13) {
+              toast.warning('Letter must be less then 13')
             }
           }} placeholder='Dish' />
           <input className='inputItem bg-gray-200 w-80 h-10 pl-4 mt-4 lg:mt-0' type="text" onChange={(e) => {
