@@ -22,7 +22,7 @@ const handleHome = () => {
   return (
     <div className="bg-green-400 h-16 flex">
          <div>
-           <Avatar onClick={handleHome} className="mx-4" src="./src/assets/Presentation1-removebg-preview (1).png" size="lg" />
+           <Avatar onClick={handleHome} className="mx-4" src="./src/assets/Presentation1-removebg-preview.png" size="lg" />
          </div>
          <h1 className="mx-auto my-auto font-Common text-3xl text-white">
             Food-Zone

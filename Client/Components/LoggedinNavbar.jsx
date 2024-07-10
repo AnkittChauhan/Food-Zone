@@ -3,8 +3,6 @@ import { Bars3Icon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outlin
 import { useNavigate } from 'react-router-dom';
 import { Badge } from "@nextui-org/react";
 import BrandLogo from "../src/assets/BrandLogo.png"
-import ModelForm from './miniComponents/ModelForm';
-import AdminPage from './AdminPage'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');

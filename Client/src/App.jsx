@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     setConditionalNavbar(token ? < LoggedinNavbar /> : <PreLoginNavbar />);
-  }, [token]);
+  }, []);
 
   return (
   <>
