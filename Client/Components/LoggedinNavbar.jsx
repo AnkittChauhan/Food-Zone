@@ -2,7 +2,7 @@ import { Disclosure, Menu } from '@headlessui/react';
 import { Bars3Icon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from "@nextui-org/react";
-import BrandLogo from "../dist/assets/BrandLogo.png"
+import BrandLogo from "../src/assets/BrandLogo.png"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
