@@ -1,7 +1,7 @@
-Live link :- https://food-zone-six.vercel.app/
+LIVE LINK :- https://food-zone-six.vercel.app/
 
 
-Title — Food Zone
+Title :- Food Zone (  https://food-zone-six.vercel.app/ )
 
 Overview :-
    - Its Online Fast Food ordring website , Built using MERN stack with all the functionalities like wishlist , cart and Order  
