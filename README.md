@@ -14,6 +14,6 @@ Features :-
    - The 'add to cart' functionality has already been designed, but it has not yet been implemented or made functional. 
      
 Running the project :-
-   ~ If you wanna test it's functionalities , it is live already but to run it locally , here are the following commands 
+     ~ If you wanna test it's functionalities , it is live already but to run it locally , here are the following commands 
      - Client side ( npm run dev ) 
      - Server side ( npm start )
