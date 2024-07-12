@@ -3,6 +3,8 @@ import { Bars3Icon,ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outlin
 import { useNavigate } from 'react-router-dom';
 import { Badge } from "@nextui-org/react";
 import BrandLogo from "../src/assets/BrandLogo.png"
+import { Toaster, toast } from 'sonner';
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -18,6 +20,10 @@ export default function LoggedinNavbar() {
 
   const handleHome = () =>{
     navigate('/')
+ }
+
+ const handleYourProfile = () => {
+  toast.warning('Page is not Ready...') 
  }
  
  const handleItems = () => {
@@ -70,7 +76,7 @@ export default function LoggedinNavbar() {
                           rounded-md px-3 py-2 text-sm font-medium active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all' >Home</button>
                        <button onClick={handleItems} className=' text-white hover:underline
                           rounded-md px-3 py-2 text-sm font-medium active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all' >Items</button>
-                      <button className=' text-white hover:underline
+                      <button onClick={ handleYourProfile } className=' text-white hover:underline
                           rounded-md px-3 py-2 text-sm font-medium active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all' >About</button>
                   </div>
                   
@@ -107,7 +113,7 @@ export default function LoggedinNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                           
+                            onClick={ handleYourProfile }
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
@@ -137,6 +143,7 @@ export default function LoggedinNavbar() {
                     </Menu.Items>
                  
                 </Menu>
+                <Toaster position="top-center" expand={false} richColors />
               </div>
             </div>
           </div>
