@@ -6,6 +6,14 @@ Title :- Food Zone (  https://food-zone-six.vercel.app/ )
 Overview :-
    - Its Online Fast Food ordring website , Built using MERN stack with all the functionalities like wishlist , cart and Order  
 
+Things to keep in mind :- 
+   
+    --> Website can take Few Seconds Initially during athentication 
+         - as Server is deployed on Render ( free Service ) which comes with some limitations
+         - When a request is made which can take few seconds, This initial "cold start" causes the first request to be very slow. 
+
+
+
 Features :-
    - Users can create there account using Signup , or existing users can login ( authentication functionality )
    - It also throw warning if user already exsist
