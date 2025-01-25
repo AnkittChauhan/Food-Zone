@@ -24,47 +24,6 @@ mongoose.connect(database)
         console.error("Error connecting to the database:", error);
     });
 
-
-
-    // app.post("/addItem", async (req, res) => {
-    //     try {
-    //         const Item = req.body;
-    //         const newItem = new ItemModel(Item);
-    //         await newItem.save();
-    
-    //     } catch (err) {
-    //         res.json(err);
-    //     }
-    // });
-
-
-
-    // app.post('/createUser', async (req, res) => {
-    //     try {
-    //         const Customer = req.body;
-    //         const newCustomer = new CustomerModel(Customer);
-    //         await newCustomer.save();
-    //         console.log(newCustomer);
-
-    //         const token = jwt.sign({ id: req.body.email }, SecretKey );
-    //         res.json({ token });
-
-    //     } catch (err) {
-    //         res.json(err);
-    //     }
-    // });
-    
-
-    // app.get("/getUser", async (req, res) => {
-    //     try {
-    //         const results = await CustomerModel.find();
-    //         res.json(results);
-    //     } catch (err) {
-    //         res.json(err);
-    //     }
-    // });
-
-
     app.post( '/Login',async( req , res ) => {
         
         
