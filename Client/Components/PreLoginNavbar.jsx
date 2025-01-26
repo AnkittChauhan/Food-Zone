@@ -30,10 +30,7 @@ const handleHome = () => {
          </h1>
          <div className="space-x-2 py-2 px-2">
            <Button onClick={ handleSignIn } className="bg-black px-3 py-2 rounded-xl text-white hover:bg-slate-600 ">
-             LogIn
-           </Button>
-           <Button onClick={ handleSignUp }  className="bg-black px-3 py-2 rounded-xl text-white hover:bg-slate-600">
-            SignUp
+             SignIn / SignUp
            </Button>
          </div>
     </div>
