@@ -2,31 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from '../Components/Home'
 import LogInPage from '../Components/LogInPage'
-import PreLoginNavbar from '../Components/PreLoginNavbar'
+import Navbar from '../Components/Navbar'
 import LoggedinNavbar from '../Components/LoggedinNavbar'
 import SignUp from '../Components/SignUp'
 import FoodMenu from '../Components/FoodMenu'
 import CartPage from '../Components/CartPage'
 import BilingPage from '../Components/BilingPage'
 import AdminPage from '../Components/AdminPage';
-import ModelForm from '../Components/miniComponents/ModelForm';
+import { useUser } from "@clerk/clerk-react"; 
 
 
 const App = () => {
  
-  const [ conditionalNavbar, setConditionalNavbar] = useState('');
-
-  const token = localStorage.getItem('Token');
-
-  useEffect(() => {
-    setConditionalNavbar(token ? < LoggedinNavbar /> : <PreLoginNavbar />);
-  }, []);
+  const { isSignedIn } = useUser();
 
   return (
   <>
   
   <BrowserRouter>
-    {conditionalNavbar}
+    {isSignedIn ? < LoggedinNavbar /> : <Navbar />}
       <Routes>
           <Route path="/" element={< Home />} />
           <Route path="/SignUp"  element={<SignUp />} />

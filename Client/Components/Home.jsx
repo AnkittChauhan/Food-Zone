@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import MenuLogo from '../src/assets/HomeLogo.png'
 import { Toaster, toast } from 'sonner';
+import { useUser } from "@clerk/clerk-react";
 
 const Home = () => {
-
+  
   const navigate = useNavigate();
   const [ token , setToken ] = useState('');
+  const { isSignedIn } = useUser();
+  
 
   useEffect(() => {
     setToken(localStorage.getItem("Token")); 
@@ -14,7 +17,7 @@ const Home = () => {
 
   const handleOrderNow = () => {
     
-   token?navigate('/Menu'):toast.warning('Please Login/SignUp first') 
+    isSignedIn?navigate('/Menu'):toast.warning('Please Login/SignUp first') 
   }  
   
   
