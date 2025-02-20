@@ -1,6 +1,7 @@
 import { Disclosure, Menu } from '@headlessui/react';
 import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
 import { Badge } from "@nextui-org/react";
 import BrandLogo from "../src/assets/BrandLogo.png"
 import { Toaster, toast } from 'sonner';
@@ -19,6 +20,7 @@ export default function LoggedinNavbar() {
 
   const handleAdmin = () => {
     navigate('/AdminPage')
+    setIsOpen(true)
   }
 
   const handleYourProfile = () => {
@@ -31,6 +33,17 @@ export default function LoggedinNavbar() {
 
   const handleLogoClick = () => {
     navigate('/')
+  }
+
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const handleAdminClose = () => {
+    setIsOpen(false)
+    navigate('/')
+  }
+
+  const handleAdminSubmit = () => {
+    
   }
 
   return (
@@ -51,7 +64,7 @@ export default function LoggedinNavbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-              <div onClick={ handleLogoClick } className="flex flex-shrink-0 items-center">
+                <div onClick={handleLogoClick} className="flex flex-shrink-0 items-center">
                   <img
                     className="h-10 w-auto"
                     src={BrandLogo}
@@ -60,16 +73,60 @@ export default function LoggedinNavbar() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex">
-                    <button onClick={ handleYourProfile } className=' text-white hover:underline
+                    <button onClick={handleYourProfile} className=' text-white hover:underline
                           rounded-md px-3 py-2 text-sm font-medium active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all' >About</button>
-                          <Toaster position="top-center" expand={false} richColors />
-                    <button onClick={ handleItems } className=' text-white hover:underline
+                    <Toaster position="top-center" expand={false} richColors />
+                    <button onClick={handleItems} className=' text-white hover:underline
                           rounded-md px-3 py-2 text-sm font-medium active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all' >Items</button>
-                    <button onClick={ handleAdmin } className=' text-white hover:underline
+                    <button onClick={handleAdmin} className=' text-white hover:underline
                           rounded-md px-3 py-2 text-sm font-medium active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all' >Admin</button>
                   </div>
 
                 </div>
+
+                {isOpen && (
+                  <div className="fixed inset-0 flex items-center justify-center backdrop-blur ">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+                      <h2 className="text-xl font-semibold">Admin ? Prove it !</h2>
+                      <p className="mt-2 text-gray-600">Only admin can go futher</p>
+
+                      {/* Input Boxes */}
+                      <div className='mt-5'>
+                        <input 
+                          type="text"
+                          placeholder='admin Mail'
+                          className='text-sm p-2 border-b focus:outline-none' 
+                          />
+                          <input 
+                          type="text"
+                          placeholder='admin Pass'
+                          className='text-sm p-2 border-b focus:outline-none' 
+                          />
+                        
+                      </div>
+
+                      {/* Close Button */}
+                      <div className='space-x-2'>
+                        <button
+                          onClick={
+                            handleAdminClose
+                          }
+                          className="mt-4 px-4 py-1 bg-red-500 hover:bg-red-600 text-white rounded"
+                        >
+                          Close
+                        </button>
+                        <button
+                          onClick={
+                            handleAdminSubmit
+                          }
+                          className="mt-4 px-4 py-1 bg-green-500 hover:bg-green-600 text-white rounded"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div onClick={handleCart} className="flex gap-5 ml-4 flow lg:ml-6">
