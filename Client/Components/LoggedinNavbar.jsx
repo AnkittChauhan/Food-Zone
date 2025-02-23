@@ -34,17 +34,25 @@ export default function LoggedinNavbar() {
   const handleLogoClick = () => {
     navigate('/')
   }
-
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const handleAdminClose = () => {
     setIsOpen(false)
     navigate('/')
   }
 
+  // const verifiedAdminMail = process.env.ADMIN_MAIL
+  
+  const adminEmail = import.meta.env.VITE_ADMIN_MAIL;
+  const adminPassword = import.meta.env.VITE_ADMIN_PASS
+
   const handleAdminSubmit = () => {
-    
+    console.log("Admin Email:", adminEmail);
+    console.log("Admin Password:", adminPassword);
   }
+
+  const [adminMail, setAdminMail] = useState(' ');
+  const [adminPass, setAdminPass] = useState(' ');
 
   return (
     <Disclosure as="nav" className="bg-green-400">
@@ -92,17 +100,23 @@ export default function LoggedinNavbar() {
 
                       {/* Input Boxes */}
                       <div className='mt-5'>
-                        <input 
+                        <input
+                          onChange={(e) => {
+                            setAdminMail(e.target.value)
+                          }}
                           type="text"
                           placeholder='admin Mail'
-                          className='text-sm p-2 border-b focus:outline-none' 
-                          />
-                          <input 
+                          className='text-sm p-2 border-b focus:outline-none'
+                        />
+                        <input
+                          onChange={(e) => {
+                            setAdminPass(e.target.value)
+                          }}
                           type="text"
                           placeholder='admin Pass'
-                          className='text-sm p-2 border-b focus:outline-none' 
-                          />
-                        
+                          className='text-sm p-2 border-b focus:outline-none'
+                        />
+
                       </div>
 
                       {/* Close Button */}
