@@ -41,8 +41,8 @@ export default function LoggedinNavbar() {
     navigate('/')
   }
 
-  // const verifiedAdminMail = process.env.ADMIN_MAIL
-  
+  const verifiedAdminMail = process.env.ADMIN_MAIL
+
   const adminEmail = import.meta.env.VITE_ADMIN_MAIL;
   const adminPassword = import.meta.env.VITE_ADMIN_PASS
 
