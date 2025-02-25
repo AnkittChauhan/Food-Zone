@@ -152,6 +152,8 @@ export default function LoggedinNavbar() {
                     </Badge>
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
+
+                  {/* added Test */}
                   <div className='h-2 w-6 p-0'>
                     <SignedIn>
                       <UserButton />
