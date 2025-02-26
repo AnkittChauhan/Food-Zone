@@ -1,7 +1,7 @@
 import { Disclosure, Menu } from '@headlessui/react';
 import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@nextui-org/react";
 import BrandLogo from "../src/assets/BrandLogo.png"
 import { Toaster, toast } from 'sonner';
@@ -12,6 +12,27 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-reac
 
 
 export default function LoggedinNavbar() {
+
+  const [ isAdminLoggedIn , setIsAdminLoggedIn ] = useState(false);
+  const [adminMail, setAdminMail] = useState(' ');
+  const [adminPass, setAdminPass] = useState(' ');
+
+  useEffect(() => {
+
+  const storedValue = localStorage.getItem('isAdminLoggedIn');
+  if (storedValue === 'true') {
+    // setIsAdminLoggedIn(true);
+    setIsOpen(false);
+  }
+
+  }, []);
+
+
+
+
+ 
+
+
   const navigate = useNavigate();
 
   const handleCart = () => {
@@ -19,8 +40,18 @@ export default function LoggedinNavbar() {
   };
 
   const handleAdmin = () => {
+    
     navigate('/AdminPage')
-    setIsOpen(true)
+
+    const storedVal = localStorage.getItem('isAdminLoggedIn');
+    
+    if( storedVal === 'true' ){
+      setIsOpen(false)
+    }
+    else{
+      setIsOpen(true);
+    }
+
   }
 
   const handleYourProfile = () => {
@@ -42,16 +73,32 @@ export default function LoggedinNavbar() {
   }
 
 
-  const adminEmail = import.meta.env.VITE_ADMIN_MAIL;
-  const adminPassword = import.meta.env.VITE_ADMIN_PASS
+  const REGadminEmail = import.meta.env.VITE_ADMIN_MAIL;
+  const REGadminPassword = import.meta.env.VITE_ADMIN_PASS
+
+
 
   const handleAdminSubmit = () => {
-    console.log("Admin Email:", adminEmail);
-    console.log("Admin Password:", adminPassword);
+    
+    if ( adminMail === REGadminEmail && adminPass === REGadminPassword ) {
+      setIsOpen(false)
+      // setIsAdminLoggedIn(true);
+
+      localStorage.setItem('isAdminLoggedIn', 'true');
+
+      toast.success('Welcome Admin', {
+        autoClose: 500,
+      })
+      
+    }
+    else{
+      toast.error('Wrong ID/PASS', {
+        autoClose: 500,
+      })
+    }
   }
 
-  const [adminMail, setAdminMail] = useState(' ');
-  const [adminPass, setAdminPass] = useState(' ');
+ 
 
   return (
     <Disclosure as="nav" className="bg-green-400">
@@ -136,6 +183,7 @@ export default function LoggedinNavbar() {
                         >
                           Submit
                         </button>
+                        <Toaster position="top-center" expand={false} richColors />
                       </div>
                     </div>
                   </div>
@@ -153,7 +201,6 @@ export default function LoggedinNavbar() {
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
 
-                  {/* added Test */}
                   <div className='h-2 w-6 p-0'>
                     <SignedIn>
                       <UserButton />
