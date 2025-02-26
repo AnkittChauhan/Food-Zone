@@ -6,7 +6,7 @@ import { Badge } from "@nextui-org/react";
 import BrandLogo from "../src/assets/BrandLogo.png"
 import { Toaster, toast } from 'sonner';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-
+// import { useAuth } from "@clerk/clerk-react";
 
 
 
@@ -16,21 +16,26 @@ export default function LoggedinNavbar() {
   const [ isAdminLoggedIn , setIsAdminLoggedIn ] = useState(false);
   const [adminMail, setAdminMail] = useState(' ');
   const [adminPass, setAdminPass] = useState(' ');
+  // const { isSignedIn } = useAuth();
+
+
+  // This remooves Admin Access from localStorage !
+
+  // useEffect(() => {
+  //   if (!isSignedIn) {
+  //     localStorage.setItem('isAdminLoggedIn', 'false');
+  //   }
+  // }, [isSignedIn]);
+
 
   useEffect(() => {
 
   const storedValue = localStorage.getItem('isAdminLoggedIn');
   if (storedValue === 'true') {
-    // setIsAdminLoggedIn(true);
     setIsOpen(false);
   }
 
   }, []);
-
-
-
-
- 
 
 
   const navigate = useNavigate();
