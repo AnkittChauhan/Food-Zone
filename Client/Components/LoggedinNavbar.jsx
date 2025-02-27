@@ -19,7 +19,14 @@ export default function LoggedinNavbar() {
   // const { isSignedIn } = useAuth();
 
 
-  // This remooves Admin Access from localStorage !
+  // useEffect(() => {
+  //   if (!isSignedIn) {
+  //     localStorage.setItem('isAdminLoggedIn', 'false');
+  //   }
+  // }, [isSignedIn]);
+
+
+  // This removes Admin Access from localStorage !
 
   // useEffect(() => {
   //   if (!isSignedIn) {
