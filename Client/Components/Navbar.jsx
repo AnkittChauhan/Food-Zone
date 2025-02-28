@@ -3,7 +3,8 @@ import { Button, Avatar } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import BrandLogo from "../src/assets/BrandLogo.png"
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import { useUser } from "@clerk/clerk-react"; 
+import { useUser } from "@clerk/clerk-react";
+
 
 
 export default function Navbar() {
@@ -16,6 +17,10 @@ export default function Navbar() {
     navigate('/')
   }
 
+  const handleSignIn = () => {
+    localStorage.setItem('isAdminLoggedIn', 'false');
+  }
+
 
   return (
     <div className="bg-green-400 h-16 flex">
@@ -26,7 +31,7 @@ export default function Navbar() {
         Food-Zone
       </h1>
       <div className="space-x-2 py-2 px-2">
-        <Button className={` ${ isSignedIn ? 'h-12 w-12 p-0' : 'bg-black px-3 py-2 rounded-xl text-white hover:bg-slate-600' } `}>
+        <Button onClick={handleSignIn} className={` ${isSignedIn ? 'h-12 w-12 p-0' : 'bg-black px-3 py-2 rounded-xl text-white hover:bg-slate-600'} `}>
           <SignedOut>
             <SignInButton />
           </SignedOut>
