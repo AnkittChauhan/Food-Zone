@@ -26,6 +26,7 @@ mongoose.connect(database)
 
 
 
+
 app.post('/addToCart', async (req, res) => {
     try {
         const { userId, item } = req.body;
@@ -69,6 +70,30 @@ app.post('/addToCart', async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+app.get('/getCart/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+
+        // Validate request
+        if (!userId) {
+            return res.status(400).json({ message: "User ID is required" });
+        }
+
+        // Find the cart for the specific user
+        const cart = await Cart.findOne({ userId });
+
+        if (!cart) {
+            return res.status(200).json({ userId, items: [] });
+        }
+
+        res.status(200).json(cart);
+    } catch (error) {
+        console.error("Error fetching user cart:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
 
 //--------------------------------| For Food Menu |------------------------------------------------//
 
