@@ -7,38 +7,20 @@ import BrandLogo from "../src/assets/BrandLogo.png"
 import { Toaster, toast } from 'sonner';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { useLocation } from "react-router-dom";
-
-
-
+import { useUser } from "@clerk/clerk-react";
+import axios from 'axios';
 
 export default function LoggedinNavbar() {
 
   const [ isAdminLoggedIn , setIsAdminLoggedIn ] = useState(false);
   const [adminMail, setAdminMail] = useState(' ');
   const [adminPass, setAdminPass] = useState(' ');
-  // const { isSignedIn } = useAuth();
-
-
-  // useEffect(() => {
-  //   if (!isSignedIn) {
-  //     localStorage.setItem('isAdminLoggedIn', 'false');
-  //   }
-  // }, [isSignedIn]);
-
-
-  // This removes Admin Access from localStorage !
-
-  // useEffect(() => {
-  //   if (!isSignedIn) {
-  //     localStorage.setItem('isAdminLoggedIn', 'false');
-  //   }
-  // }, [isSignedIn]);
+  const [ cartItem , setCartItems ] = useState('');
+  const { user } = useUser();
 
   const location = useLocation();
 
-
   useEffect(() => {
-
     if (location.pathname === "/AdminPage") {  
       const storedValue = localStorage.getItem("isAdminLoggedIn");
       if (storedValue !== "true") {
@@ -47,6 +29,26 @@ export default function LoggedinNavbar() {
     }
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (user) {
+      const fetchCart = () => {
+        axios.get(`https://food-zone-nco8.onrender.com/getCart/${user.id}`)
+          .then(response => {
+            setCartItems(response.data.items.length);
+          })
+          .catch(error => {
+            console.error("Error fetching user cart:", error);
+            setCartItems(0); // Set cart items to 0 in case of error
+          });
+      };
+  
+      fetchCart(); // Initial fetch
+      const interval = setInterval(fetchCart, 100); // Fetch every 5 seconds
+  
+      return () => clearInterval(interval); // Cleanup on unmount
+    }
+  }, [user]);
+
   const navigate = useNavigate();
 
   const handleCart = () => {
@@ -54,7 +56,6 @@ export default function LoggedinNavbar() {
   };
 
   const handleAdmin = () => {
-    
     navigate('/AdminPage')
 
     const storedVal = localStorage.getItem('isAdminLoggedIn');
@@ -65,7 +66,6 @@ export default function LoggedinNavbar() {
     else{
       setIsOpen(true);
     }
-
   }
 
   const handleYourProfile = () => {
@@ -86,23 +86,16 @@ export default function LoggedinNavbar() {
     navigate('/')
   }
 
-
   const REGadminEmail = import.meta.env.VITE_ADMIN_MAIL;
   const REGadminPassword = import.meta.env.VITE_ADMIN_PASS
 
-
-
   const handleAdminSubmit = () => {
-    
     if ( adminMail === REGadminEmail && adminPass === REGadminPassword ) {
       setIsOpen(false)
-
       localStorage.setItem('isAdminLoggedIn', 'true');
-
       toast.success('Welcome Admin', {
         autoClose: 500,
       })
-      
     }
     else{
       toast.error('Wrong ID/PASS', {
@@ -110,8 +103,6 @@ export default function LoggedinNavbar() {
       })
     }
   }
-
- 
 
   return (
     <Disclosure as="nav" className="bg-green-400">
@@ -148,7 +139,6 @@ export default function LoggedinNavbar() {
                     <button onClick={handleAdmin} className=' text-white hover:underline
                           rounded-md px-3 py-2 text-sm font-medium active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all' >Admin</button>
                   </div>
-
                 </div>
 
                 {isOpen && (
@@ -175,7 +165,6 @@ export default function LoggedinNavbar() {
                           placeholder='admin Pass'
                           className='text-sm p-2 border-b focus:outline-none'
                         />
-
                       </div>
 
                       {/* Close Button */}
@@ -205,7 +194,7 @@ export default function LoggedinNavbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div className="flex gap-5 ml-4 flow lg:ml-6">
                   <a onClick={handleCart} className="group -m-2 flex items-center p-2">
-                    <Badge content="2" className='bg-red-500 text-white' shape="circle">
+                    <Badge content={cartItem} className='bg-red-500 text-xs text-white' shape="circle">
                       <ShoppingBagIcon
                         className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"

@@ -13,7 +13,7 @@ export default function FoodMenu() {
   const [listOfItems, setlistOfItems] = useState([]);
   
   const handleAddItem = async (product) => {
-    // Play sound
+  
     new Audio(CartSound).play();
     
     if (isSignedIn && user) {
