@@ -1,6 +1,3 @@
-LIVE LINK :- https://food-zone-six.vercel.app/
-
-
 Title :- Food Zone (  https://food-zone-six.vercel.app/ )
 
 Overview :-
