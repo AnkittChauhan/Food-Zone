@@ -6,7 +6,7 @@ import { Badge } from "@nextui-org/react";
 import BrandLogo from "../src/assets/BrandLogo.png"
 import { Toaster, toast } from 'sonner';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-// import { useAuth } from "@clerk/clerk-react";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -34,16 +34,18 @@ export default function LoggedinNavbar() {
   //   }
   // }, [isSignedIn]);
 
+  const location = useLocation();
+
 
   useEffect(() => {
 
-  const storedValue = localStorage.getItem('isAdminLoggedIn');
-  if (storedValue === 'true') {
-    setIsOpen(false);
-  }
-
-  }, []);
-
+    if (location.pathname === "/AdminPage") {  
+      const storedValue = localStorage.getItem("isAdminLoggedIn");
+      if (storedValue !== "true") {
+        setIsOpen(true);
+      }
+    }
+  }, [location.pathname]);
 
   const navigate = useNavigate();
 
