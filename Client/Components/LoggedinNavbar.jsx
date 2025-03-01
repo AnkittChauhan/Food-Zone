@@ -96,7 +96,6 @@ export default function LoggedinNavbar() {
     
     if ( adminMail === REGadminEmail && adminPass === REGadminPassword ) {
       setIsOpen(false)
-      // setIsAdminLoggedIn(true);
 
       localStorage.setItem('isAdminLoggedIn', 'true');
 

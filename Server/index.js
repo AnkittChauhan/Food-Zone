@@ -3,8 +3,8 @@ require('dotenv').config();
 const express = require('express')
 const mongoose = require('mongoose');
 const cors = require('cors');
-const CustomerModel = require('./models/Customers')
 const ItemModel = require('./models/Items')
+const Cart = require('./models/Cart');
 
 const app = express()
 app.use(cors())
@@ -24,114 +24,84 @@ mongoose.connect(database)
         console.error("Error connecting to the database:", error);
     });
 
-    app.post( '/Login',async( req , res ) => {
-        
-        
-        try {
 
-            const {email , password } = req.body;
-            if(!email){
-                return res.json("Provide a User first");
-         }
-         else {
-                const isUser = await CustomerModel.findOne({email , password}) 
-                if(!isUser){
-                  res.status(401).json({message:"User Not Found"})
-                } 
-                else{
-                    const Token = jwt.sign(email, process.env.SecretKey)
-                    res.json({ message:"Login Successful" ,Token })
-                }
-         }   
- 
-        } catch (error) {
-            res.json(error)
+
+app.post('/addToCart', async (req, res) => {
+    try {
+        const { userId, item } = req.body;
+
+        // Validate the request
+        if (!userId || !item) {
+            return res.status(400).json({ message: "Missing required fields" });
         }
-        
 
-        
-    })
+        // Find existing cart or create new one
+        let cart = await Cart.findOne({ userId });
 
+        if (cart) {
+            // Check if item already exists
+            const itemIndex = cart.items.findIndex(i =>
+                i.foodItemId.toString() === item.foodItemId
+            );
 
-
-    async function verifyJWT( req , res , next ){
-
-        const token = localStorage.getItem("Token");
-        if(!token){
-            res.json({message:"User not Authorized"})
-        } else{
-            const Username = jwt.verify( token , SecretKey );
-            const isUser = await CustomerModel.findOne(Username);
-            
-            if(!isUser){
-                res.json("User not Authorized")
-            }else{
-                next()
+            if (itemIndex > -1) {
+                // Update quantity
+                cart.items[itemIndex].quantity += item.quantity;
+            } else {
+                // Add new item
+                cart.items.push(item);
             }
 
-        }        
-    }
+            await cart.save();
+        } else {
+            // Create new cart
+            cart = new Cart({
+                userId,
+                items: [item]
+            });
 
-
-
-    app.post( '/CreateUser' ,async( req , res ) => {
-
-        const user = req.body;
-        const email = req.body.email;
-        const isUser = await CustomerModel.findOne(user);
-
-        if(isUser){
-            res.json({message: "User Already exist , Can't be Created"});
-        } else{
-                try {
-                    
-                    const newUser = new CustomerModel(user);
-                    await newUser.save();
-                    const token = jwt.sign( email , process.env.SecretKey );
-                    res.json({message:"User Created Successfully" , token})
-
-
-                } catch (error) {
-                    res.status(404).json(error)
-                }
+            await cart.save();
         }
 
-    })
+        res.status(200).json(cart);
+    } catch (error) {
+        console.error("Error adding to cart:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
 
 //--------------------------------| For Food Menu |------------------------------------------------//
 
 
-        app.post("/createItem", async (req, res) => {
-            try {
-                const items = req.body;
-                const newItems = new ItemModel(items);
-                await newItems.save();
-                res.json(items);
-            } catch (err) {
-                res.json(err);
-            }
-        });
+app.post("/createItem", async (req, res) => {
+    try {
+        const items = req.body;
+        const newItems = new ItemModel(items);
+        await newItems.save();
+        res.json(items);
+    } catch (err) {
+        res.json(err);
+    }
+});
 
-        app.delete("/deleteItems/:id", async (req, res) => {
-            const id = req.params.id;
-            try {
-                await ItemModel.findByIdAndDelete(id).exec();
-                res.json({ message: "ItemRemoved" });
-            } catch (err) {
-                res.json(err);
-            }
-        });
+app.delete("/deleteItems/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        await ItemModel.findByIdAndDelete(id).exec();
+        res.json({ message: "ItemRemoved" });
+    } catch (err) {
+        res.json(err);
+    }
+});
 
-        app.get("/getItems", async (req, res) => {
-            try {
-                const results = await ItemModel.find();
-                res.json(results);
-            } catch (err) {
-                res.json(err);
-            }
-        });
-
-
+app.get("/getItems", async (req, res) => {
+    try {
+        const results = await ItemModel.find();
+        res.json(results);
+    } catch (err) {
+        res.json(err);
+    }
+});
 
 
 
@@ -142,7 +112,9 @@ mongoose.connect(database)
 
 
 
-app.listen( PORT , () => {
+
+
+app.listen(PORT, () => {
     console.log("Hurreyy !! Server is running");
 })
 
