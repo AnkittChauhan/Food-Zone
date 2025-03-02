@@ -71,6 +71,35 @@ app.post('/addToCart', async (req, res) => {
     }
 });
 
+app.delete('/deleteFromCart/:userId/:itemId', async (req, res) => {
+    try {
+        const { userId, itemId } = req.params;
+        console.log( userId, itemId );
+        
+        // Validate request
+        if (!userId || !itemId) {
+            return res.status(400).json({ message: "User ID and Item ID are required" });
+        }
+
+        // Find the cart for the specific user
+        const cart = await Cart.findOne({ userId });
+
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
+        }
+
+        // Remove the item from the cart
+        cart.items = cart.items.filter(item => item._id && item._id.toString() !== itemId);
+
+        await cart.save();
+
+        res.status(200).json(cart);
+    } catch (error) {
+        console.error("Error deleting item from cart:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
 app.get('/getCart/:userId', async (req, res) => {
     try {
         const { userId } = req.params;
