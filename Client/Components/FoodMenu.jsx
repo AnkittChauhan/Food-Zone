@@ -5,6 +5,8 @@ import NewSlide from "../src/assets/NewSlide.mp3";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from "@clerk/clerk-react";
+import { Toaster, toast } from 'sonner';
+
 
 
 export default function FoodMenu() {
@@ -41,8 +43,9 @@ export default function FoodMenu() {
           }
         })
         .then((response) => {
-          console.log("Item added to cart successfully");
-          // You could add a toast notification here
+           toast.success('Added to Cart', {
+                    autoClose: 500,
+                  })
         })
         .catch((error) => {
           console.error("Error adding item to cart:", error);
@@ -72,7 +75,6 @@ export default function FoodMenu() {
       }
       
       localStorage.setItem('cart', JSON.stringify(cart));
-      console.log("Item added to local cart");
     }
   };
 
@@ -121,6 +123,7 @@ export default function FoodMenu() {
               >
                 Add Item
               </button>
+              <Toaster position="top-center" expand={false} richColors />
             </div>
           ))}
         </div>

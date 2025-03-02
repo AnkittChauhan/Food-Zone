@@ -34,7 +34,7 @@ const CartPage = () => {
       };
 
       fetchCart(); // Initial fetch
-      const interval = setInterval(fetchCart, 1000);
+      const interval = setInterval(fetchCart, 500);
       return () => clearInterval(interval);
     }
   }, [ user ]);
@@ -59,6 +59,7 @@ const CartPage = () => {
   const handleItemDelete = async (id) => {
     try {
       await axios.delete(`https://food-zone-nco8.onrender.com/deleteFromCart/${user.id}/${id}`).then(
+        
         toast.success('Item Removed', {
           autoClose: 500,
         })
