@@ -38,14 +38,13 @@ export default function LoggedinNavbar() {
           })
           .catch(error => {
             console.error("Error fetching user cart:", error);
-            setCartItems(0); // Set cart items to 0 in case of error
+            setCartItems(0);
           });
       };
   
       fetchCart(); // Initial fetch
-      const interval = setInterval(fetchCart, 100); // Fetch every 5 seconds
-  
-      return () => clearInterval(interval); // Cleanup on unmount
+      const interval = setInterval(fetchCart, 100); 
+      return () => clearInterval(interval); 
     }
   }, [user]);
 
