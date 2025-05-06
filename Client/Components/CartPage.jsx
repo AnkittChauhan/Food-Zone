@@ -92,7 +92,7 @@ const CartPage = () => {
                 </div>
                 <div className="ml-4 flex-1">
                   <h3 className="text-lg font-semibold">{item.name}</h3>
-                  <p className="text-gray-600">${item.price.toFixed(2)}</p>
+                  <p className="text-gray-600">₹{item.price.toFixed(2)}</p>
                   <div className="flex mt-2">
                     <span className="mr-2">Quantity:</span>
                     <div>{item.quantity}</div>
