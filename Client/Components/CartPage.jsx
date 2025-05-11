@@ -22,46 +22,32 @@ const CartPage = () => {
 
   useEffect(() => {
     if (user) {
-      const fetchCart = () => {
-        axios.get(`https://food-zone-nco8.onrender.com/getCart/${user.id}`)
-          .then(response => {
-            setCartItems(response.data.items);
-          })
-          .catch(error => {
+      const fetchCart = async () => {
+        try {
+          const response = await axios.get(`https://food-zone-nco8.onrender.com/getCart/${user.id}`)
+          setCartItems(response.data.items);
+        }
+        catch {
+          (error => {
             console.error("Error fetching user cart:", error);
             setCartItems('');
-          });
+          })
+        };
       };
 
       fetchCart(); // Initial fetch
-      const interval = setInterval(fetchCart, 500);
+      const interval = setInterval(fetchCart, 100);
       return () => clearInterval(interval);
     }
-  }, [ user ]);
+  }, [user]);
 
-
-  // const [cartItems, setCartItems] = useState([
-  //   {
-  //     id: 1,
-  //     name: 'Product 1',
-  //     price: 50.0,
-  //     quantity: 1,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Product 2',
-  //     price: 90.0,
-  //     quantity: 1,
-  //   },
-
-  // ]);
 
   const handleItemDelete = async (id) => {
     try {
       await axios.delete(`https://food-zone-nco8.onrender.com/deleteFromCart/${user.id}/${id}`).then(
-        
+
         toast.success('Item Removed', {
-          autoClose: 500,
+          autoClose: 100,
         })
       )
 
@@ -69,7 +55,7 @@ const CartPage = () => {
       console.error("Error deleting item from cart:", error);
     }
   };
-  
+
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
@@ -98,7 +84,7 @@ const CartPage = () => {
                     <div>{item.quantity}</div>
                   </div>
                 </div>
-                <button onClick={ () => handleItemDelete(item._id)}><img src="https://img.freepik.com/premium-vector/red-cross-button-icon-design_178156-173.jpg?w=360" className='h-10' /></button>
+                <button onClick={() => handleItemDelete(item._id)}><img src="https://img.freepik.com/premium-vector/red-cross-button-icon-design_178156-173.jpg?w=360" className='h-10' /></button>
                 <Toaster position="top-center" expand={false} richColors />
               </div>
             ))}
