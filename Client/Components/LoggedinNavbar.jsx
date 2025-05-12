@@ -12,7 +12,6 @@ import axios from 'axios';
 
 export default function LoggedinNavbar() {
 
-  const [ isAdminLoggedIn , setIsAdminLoggedIn ] = useState(false);
   const [adminMail, setAdminMail] = useState(' ');
   const [adminPass, setAdminPass] = useState(' ');
   const [ cartItem , setCartItems ] = useState('');

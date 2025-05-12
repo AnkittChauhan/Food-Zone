@@ -13,19 +13,20 @@ export default function FoodMenu() {
   const { isSignedIn, user } = useUser();
   const { getToken } = useAuth();
   const [listOfItems, setlistOfItems] = useState([]);
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   const handleAddItem = async (product) => {
-  
+
     new Audio(CartSound).play();
-    
+
     if (isSignedIn && user) {
       try {
         // Get user ID from Clerk
         const userId = user.id;
-        
+
         // Get token properly using the getToken method from useAuth
         const token = await getToken();
-        
+
         // Send to backend
         axios.post("https://food-zone-nco8.onrender.com/addToCart", {
           userId: userId,
@@ -42,24 +43,24 @@ export default function FoodMenu() {
             Authorization: `Bearer ${token}`
           }
         })
-        .then((response) => {
-           toast.success('Added to Cart', {
-                    autoClose: 500,
-                  })
-        })
-        .catch((error) => {
-          console.error("Error adding item to cart:", error);
-        });
+          .then((response) => {
+            toast.success('Added to Cart', {
+              autoClose: 500,
+            })
+          })
+          .catch((error) => {
+            console.error("Error adding item to cart:", error);
+          });
       } catch (error) {
         console.error("Authentication error:", error);
       }
     } else {
       // Handle guest users - store in localStorage
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      
+
       // Check if item already exists
       const existingItemIndex = cart.findIndex(item => item.foodItemId === product._id);
-      
+
       if (existingItemIndex > -1) {
         // Update quantity
         cart[existingItemIndex].quantity += 1;
@@ -73,7 +74,7 @@ export default function FoodMenu() {
           imageUrl: product.url
         });
       }
-      
+
       localStorage.setItem('cart', JSON.stringify(cart));
     }
   };
@@ -86,6 +87,9 @@ export default function FoodMenu() {
   useEffect(() => {
     axios.get("https://food-zone-nco8.onrender.com/getItems").then((response) => {
       setlistOfItems(response.data);
+      if (response.data) {
+        setIsLoading(false)
+      }
     });
   }, []);
 
@@ -93,40 +97,56 @@ export default function FoodMenu() {
     <div className="bg-green-200">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-black">Satisfy Your Cravings !</h2>
-        
-        <div className="mt-6 grid max-h-14 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {listOfItems.map((product) => (
-            <div key={product._id || product.id} className="relative">
-              <div className="h-64 w-64 rounded-3xl bg-gray-500 overflow-hidden">
-                <Image
-                  className="h-64 w-64"
-                  isZoomed
-                  src={product.url}
-                  onMouseEnter={handleHoverSound}
-                />
-              </div>
-              <div className="mt-4 flex justify-center space-x-2">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <a href={product.href}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
-                    </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+
+        {
+          isLoading ? (
+            <td className="py-4">
+              <div className="flex justify-center items-center w-full h-32">
+                <div className="relative w-24 h-24">
+                  <div className="w-full h-full border-4 border-blue-100 rounded-full"></div>
+                  <div className="absolute top-0 left-0 w-full h-full border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
-                <p className="text-sm font-medium text-green-500">₹{product.price}</p>
               </div>
-              <button 
-                onClick={() => handleAddItem(product)} 
-                className="bg-black text-white px-16 py-1 my-2 rounded-xl mx-10 hover:bg-gray-600 active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all"
-              >
-                Add Item
-              </button>
-              <Toaster position="top-center" expand={false} richColors />
-            </div>
-          ))}
-        </div>
+            </td>
+          ) :
+            (
+              <div className="mt-6 grid max-h-14 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                {listOfItems.map((product) => (
+                  <div key={product._id || product.id} className="relative">
+                    <div className="h-64 w-64 rounded-3xl bg-gray-500 overflow-hidden">
+                      <Image
+                        className="h-64 w-64"
+                        isZoomed
+                        src={product.url}
+                        onMouseEnter={handleHoverSound}
+                      />
+                    </div>
+                    <div className="mt-4 flex justify-center space-x-2">
+                      <div>
+                        <h3 className="text-sm text-gray-700">
+                          <a href={product.href}>
+                            <span aria-hidden="true" className="absolute inset-0" />
+                            {product.name}
+                          </a>
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                      </div>
+                      <p className="text-sm font-medium text-green-500">₹{product.price}</p>
+                    </div>
+                    <button
+                      onClick={() => handleAddItem(product)}
+                      className="bg-black text-white px-16 py-1 my-2 rounded-xl mx-10 hover:bg-gray-600 active:bg-gray-700 active:scale-x-110 scale-y-105 transition-all"
+                    >
+                      Add Item
+                    </button>
+                    <Toaster position="top-center" expand={false} richColors />
+                  </div>
+                ))}
+              </div>
+
+            )
+
+        }
       </div>
     </div>
   );
