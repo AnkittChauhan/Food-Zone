@@ -100,14 +100,17 @@ export default function FoodMenu() {
 
         {
           isLoading ? (
-            <td className="py-4">
-              <div className="flex justify-center items-center w-full h-32">
-                <div className="relative w-24 h-24">
-                  <div className="w-full h-full border-4 border-blue-100 rounded-full"></div>
-                  <div className="absolute top-0 left-0 w-full h-full border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
+
+            <div className="flex justify-center items-center w-full h-32 pt-32">
+              <div className="relative w-24 h-24">
+                <div className="w-full h-full border-4 border-blue-100 rounded-full"></div>
+                <div className="absolute top-0 left-0 w-full h-full border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
+                <div className="py-2">
+                  Loading...
                 </div>
               </div>
-            </td>
+            </div>
+
           ) :
             (
               <div className="mt-6 grid max-h-14 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
