@@ -90,7 +90,7 @@ const CartPage = () => {
             ))}
 
             <div className="mt-6">
-              <p className="text-lg font-semibold">Total: ${getTotalPrice().toFixed(2)}</p>
+              <p className="text-lg font-semibold">Total: ₹{getTotalPrice().toFixed(2)}</p>
               <button
 
                 className="mt-4 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
