@@ -95,7 +95,7 @@ const CartPage = () => {
 
                 className="mt-4 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
                 onClick={() => {
-                  alert('Proceed to checkout')
+                  alert('Want to Checkout ??')
                   handleCheckout()
                 }}
               >
