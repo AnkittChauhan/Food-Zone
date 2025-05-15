@@ -93,7 +93,7 @@ const CartPage = () => {
               <p className="text-lg font-semibold">Total: ₹{getTotalPrice().toFixed(2)}</p>
               <button
 
-                className="mt-4 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+                className="mt-2 bg-gradient-to-r from-green-500 to-emerald-600 focus:from-black focus:to-black hover:to-black text-white px-4 py-2 rounded-lg font-medium flex items-center hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                 onClick={() => {
                   alert('Want to Checkout ??')
                   handleCheckout()

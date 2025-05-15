@@ -5,7 +5,7 @@ import App from './App.jsx'
 import './index.css'
 import { ClerkProvider } from '@clerk/clerk-react'
 
-// Import your Publishable Key
+// Import your Publishable Key { visit clerk Documentation }
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 if (!PUBLISHABLE_KEY) {
