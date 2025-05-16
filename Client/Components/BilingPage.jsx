@@ -8,10 +8,7 @@ export default function BillingForm() {
     state: "",
     address: "",
   });
-
-  const makePayment = () => {
-    // 
-  }
+  
 
   return (
     <div className="bg-white max-w-lg mx-auto my-16 rounded-xl shadow-lg overflow-hidden border border-gray-100">
@@ -96,7 +93,6 @@ export default function BillingForm() {
         {/* Submit Button */}
         <div className="flex justify-end mt-8">
           <button 
-            onClick={ makePayment }
             className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-lg font-medium flex items-center hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
           >
             <span className="mr-2">✓</span>
