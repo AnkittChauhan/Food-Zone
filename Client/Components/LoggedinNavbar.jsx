@@ -14,13 +14,13 @@ export default function LoggedinNavbar() {
 
   const [adminMail, setAdminMail] = useState(' ');
   const [adminPass, setAdminPass] = useState(' ');
-  const [ cartItem , setCartItems ] = useState('');
+  const [cartItem, setCartItems] = useState('');
   const { user } = useUser();
 
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/AdminPage") {  
+    if (location.pathname === "/AdminPage") {
       const storedValue = localStorage.getItem("isAdminLoggedIn");
       if (storedValue !== "true") {
         setIsOpen(true);
@@ -40,10 +40,10 @@ export default function LoggedinNavbar() {
             setCartItems(0);
           });
       };
-  
+
       fetchCart(); // Initial fetch
-      const interval = setInterval(fetchCart, 100); 
-      return () => clearInterval(interval); 
+      const interval = setInterval(fetchCart, 100);
+      return () => clearInterval(interval);
     }
   }, [user]);
 
@@ -57,11 +57,11 @@ export default function LoggedinNavbar() {
     navigate('/AdminPage')
 
     const storedVal = localStorage.getItem('isAdminLoggedIn');
-    
-    if( storedVal === 'true' ){
+
+    if (storedVal === 'true') {
       setIsOpen(false)
     }
-    else{
+    else {
       setIsOpen(true);
     }
   }
@@ -88,14 +88,14 @@ export default function LoggedinNavbar() {
   const REGadminPassword = import.meta.env.VITE_ADMIN_PASS
 
   const handleAdminSubmit = () => {
-    if ( adminMail === REGadminEmail && adminPass === REGadminPassword ) {
+    if (adminMail === REGadminEmail && adminPass === REGadminPassword) {
       setIsOpen(false)
       localStorage.setItem('isAdminLoggedIn', 'true');
       toast.success('Welcome Admin', {
         autoClose: 500,
       })
     }
-    else{
+    else {
       toast.error('Wrong ID/PASS', {
         autoClose: 500,
       })
@@ -144,9 +144,13 @@ export default function LoggedinNavbar() {
                     <div className="bg-white p-6 rounded-lg shadow-lg w-96">
                       <h2 className="text-xl font-semibold">Admin ? Prove it !</h2>
                       <p className="mt-2 text-gray-600">Only admin can go futher</p>
+                      <div className='my-2 flex gap-5'>
+                        <p className="my-1 text-xs text-gray-600">Id :- ADMIN@123</p>
+                        <p className="my-1 text-xs text-gray-600">Pass :- 12345</p>
+                      </div>
 
                       {/* Input Boxes */}
-                      <div className='mt-5'>
+                      <div className='mt-3'>
                         <input
                           onChange={(e) => {
                             setAdminMail(e.target.value)

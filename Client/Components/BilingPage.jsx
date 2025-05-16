@@ -1,13 +1,5 @@
-import { useState } from "react";
 
 export default function BillingForm() {
-  const [formData, setState] = useState({
-    firstName: "",
-    lastName: "",
-    country: "",
-    state: "",
-    address: "",
-  });
   
 
   return (
