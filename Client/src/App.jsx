@@ -13,7 +13,7 @@ import { useUser } from "@clerk/clerk-react";
 
 
 const App = () => {
- 
+
   const { isSignedIn } = useUser();
 
   return (

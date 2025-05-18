@@ -42,7 +42,7 @@ export default function LoggedinNavbar() {
       };
 
       fetchCart(); // Initial fetch
-      const interval = setInterval(fetchCart, 100);
+      const interval = setInterval(fetchCart, 2000);
       return () => clearInterval(interval);
     }
   }, [user]);
