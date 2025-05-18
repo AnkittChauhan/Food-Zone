@@ -74,8 +74,8 @@ app.post('/addToCart', async (req, res) => {
 app.delete('/deleteFromCart/:userId/:itemId', async (req, res) => {
     try {
         const { userId, itemId } = req.params;
-        console.log( userId, itemId );
-        
+        console.log(userId, itemId);
+
         // Validate request
         if (!userId || !itemId) {
             return res.status(400).json({ message: "User ID and Item ID are required" });
@@ -99,6 +99,62 @@ app.delete('/deleteFromCart/:userId/:itemId', async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+
+// Update Quantity Count :
+app.put('/updateQuantity', async (req, res) => {
+    try {
+        const { userId, foodItemId, action } = req.body;
+
+        // Validate request
+        if (!userId || !foodItemId || !action) {
+            return res.status(400).json({ message: "Missing required fields" });
+        }
+
+        // Find the cart for the user
+        const cart = await Cart.findOne({ userId });
+
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
+        }
+
+        // Find the item in the cart using foodItemId
+        const itemIndex = cart.items.findIndex(item =>
+            item.foodItemId || item.foodItemId.toString() === foodItemId
+        );
+
+        if (itemIndex === -1) {
+            return res.status(404).json({ message: "Item not found in cart" });
+        }
+
+        // Update quantity based on action
+        if (action === 'increment') {
+            cart.items[itemIndex].quantity += 1;
+        } else if (action === 'decrement') {
+            cart.items[itemIndex].quantity = Math.max(1, cart.items[itemIndex].quantity - 1);
+        } else {
+            return res.status(400).json({ message: "Invalid action" });
+        }
+
+        await cart.save();
+
+        res.status(200).json({
+            message: "Cart quantity updated successfully",
+            cart
+        });
+
+    } catch (error) {
+        console.error("Error updating cart quantity:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+
+
+
+
+
+
 
 app.get('/getCart/:userId', async (req, res) => {
     try {
