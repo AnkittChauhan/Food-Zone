@@ -60,6 +60,30 @@ const CartPage = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
+
+
+
+
+
+  const handleQuantityUpdate = async (itemId, action) => {
+    try {
+      await axios.put(`https://food-zone-nco8.onrender.com/updateQuantity`, {
+        userId: user.id,
+        foodItemId: itemId,
+        action: action // 'increment' or 'decrement'
+      });
+      // Optional: show toast
+      toast.success('Quantity updated', { autoClose: 100 });
+
+    } catch (error) {
+      console.error("Error updating quantity:", error);
+      toast.error('Failed to update quantity');
+    }
+  };
+
+
+
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-3xl mx-auto bg-white p-8 rounded-md shadow-md">
@@ -77,11 +101,27 @@ const CartPage = () => {
                   />
                 </div>
                 <div className="ml-4 flex-1">
-                  <h3 className="text-lg font-semibold">{item.name}</h3>
+                  <h3 className="text-lg font-semibold">
+                    {item.name}</h3>
                   <p className="text-gray-600">₹{item.price.toFixed(2)}</p>
                   <div className="flex mt-2">
                     <span className="mr-2">Quantity:</span>
-                    <div>{item.quantity}</div>
+                    {/* <div>{item.quantity}</div> */}
+                    <div className='flex gap-1'>
+                      <button
+                        onClick={() => handleQuantityUpdate(item._id, 'decrement')}
+                        className="my-auto w-4 h-4 flex items-center justify-center border-1 border-black ">
+                        -
+                      </button>
+                      <div className="my-auto w-6 h-5 flex items-center justify-center border-1 border-black text-xs">
+                        {item.quantity}
+                      </div>
+                      <button
+                        onClick={() => handleQuantityUpdate(item._id, 'increment')}
+                        className="my-auto w-4 h-4 flex items-center justify-center border-1 border-black ">
+                        +
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <button onClick={() => handleItemDelete(item._id)}><img src="https://img.freepik.com/premium-vector/red-cross-button-icon-design_178156-173.jpg?w=360" className='h-10' /></button>
