@@ -105,7 +105,7 @@ export default function FoodMenu() {
               <div className="relative w-24 h-24">
                 <div className="w-full h-full border-4 border-blue-100 rounded-full"></div>
                 <div className="absolute top-0 left-0 w-full h-full border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
-                <div className="py-2">
+                <div className="py-2 flex justify-center items-center">
                   Loading...
                 </div>
               </div>
