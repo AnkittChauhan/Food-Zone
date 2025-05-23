@@ -74,7 +74,6 @@ app.post('/addToCart', async (req, res) => {
 app.delete('/deleteFromCart/:userId/:itemId', async (req, res) => {
     try {
         const { userId, itemId } = req.params;
-        console.log(userId, itemId);
 
         // Validate request
         if (!userId || !itemId) {
@@ -180,7 +179,11 @@ app.get('/getCart/:userId', async (req, res) => {
 });
 
 
+
+
 //--------------------------------| For Food Menu |------------------------------------------------//
+
+
 
 
 app.post("/createItem", async (req, res) => {
